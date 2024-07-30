@@ -25,7 +25,7 @@ const FifthSection = () => {
       </div>
 
       <div className="flex flex-col px-40 py-10 gap-3 text-white">
-        <div className="mt-10">
+        <div className="mt-10 flex flex-col gap-3">
           {projects.map((project, index) => (
             <div key={index} className="flex flex-col gap-5 text-white">
               <div className="flex">

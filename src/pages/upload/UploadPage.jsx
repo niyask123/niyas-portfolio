@@ -55,7 +55,7 @@ const UploadPage = () => {
       }
       setFormData({
         image: "",
-        heading: "",
+        heading: "", 
         caption: "",
         languages: "",
         url: ""

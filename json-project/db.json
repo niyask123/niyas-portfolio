@@ -1,3 +1,20 @@
 {
-  "projects": []
+  "projects": [
+    {
+      "id": "b4c1",
+      "image": "blob:http://localhost:5174/49eae35e-a56d-4742-89d2-2cc8b3d2f364",
+      "heading": "Niyas",
+      "caption": "Nothing",
+      "languages": "php, js, react",
+      "url": "https://daisyui.com/components/carousel/"
+    },
+    {
+      "id": "b500",
+      "image": "blob:http://localhost:5174/ea3c8565-02b2-410e-9621-fefb170ab4a4",
+      "heading": "Sherin",
+      "caption": "ntg",
+      "languages": "node, postSQL",
+      "url": "https://daisyui.com/components/carousel/"
+    }
+  ]
 }
