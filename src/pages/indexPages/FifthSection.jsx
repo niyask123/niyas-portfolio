@@ -30,7 +30,7 @@ const FifthSection = () => {
           {projects.map((project, index) => (
             <div key={index} className="flex flex-col gap-5 text-white">
               <div className="flex lg:flex-row flex-col">
-                <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-6 w-full">
+                <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-2 lg:p-6 w-full">
                   <div className="carousel rounded-box ">
                     <div className="carousel-item w-full">
                       <img src={project.image} className="w-full" alt="Project" />
