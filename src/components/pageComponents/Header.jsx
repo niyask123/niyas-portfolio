@@ -51,7 +51,7 @@ function Header() {
               <Link to={"/"}>HOME</Link>
             </li>
             <li>
-              <a>ABOUT</a>
+              <Link to={"/about-us"}>ABOUT</Link>
             </li>
             <li>
               <a>PROJECT</a>
@@ -60,7 +60,7 @@ function Header() {
               <a>BLOG</a>
             </li>
             <li>
-              <a>CONTACT</a>
+              <Link to={"/contact-us"}>CONTACT</Link>
             </li>
             {localStorage.getItem("authenticated") ? (
               <li>
@@ -89,7 +89,7 @@ function Header() {
               <Link to={"/"}>HOME</Link>
             </li>
             <li>
-              <a>ABOUT</a>
+              <Link to={"/about-us"}>ABOUT</Link>
             </li>
             <li>
               <a>PROJECT</a>
@@ -98,7 +98,7 @@ function Header() {
               <a>BLOG</a>
             </li>
             <li>
-              <a>CONTACT</a>
+              <Link to={"/contact-us"}>CONTACT</Link>
             </li>
 
             {localStorage.getItem("authenticated") ? (
@@ -138,7 +138,7 @@ function Header() {
             <div className="dropdown">
               <div className="avatar online" tabIndex={0} role="button">
                 <div className="w-10 rounded-full border">
-                  <img src="/public/image/personal/personal.jpg" />
+                  <img src="/image/personal/personal.jpg" />
                 </div>
 
                 <div
