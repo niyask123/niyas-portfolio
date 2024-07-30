@@ -67,7 +67,7 @@ function Header() {
               <a>CONTACT</a>
             </li>
             <li>
-                <Link to={"/uploadPage"}>Login</Link>
+                <Link to={"/uploadPage"}>LOGIN</Link>
             </li>
           </ul>
         </div>
