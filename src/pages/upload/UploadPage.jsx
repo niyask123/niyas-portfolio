@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UploadPage = () => {
   const [file, setFile] = useState(null);
@@ -60,14 +62,14 @@ const UploadPage = () => {
             },
           }
         );
-        alert("Project updated successfully!");
+        toast.success("Project updated successfully!");
       } else {
         await axios.post("https://crud-test-delta.vercel.app/upload", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        alert("Project uploaded successfully!");
+        toast.success("Project uploaded successfully!");
       }
       setFormData({
         heading: "",
@@ -80,6 +82,7 @@ const UploadPage = () => {
       fetchProjects();
     } catch (error) {
       console.error("There was an error saving the data!", error);
+      toast.error("There was an error saving the data!");
     }
   };
 
@@ -97,15 +100,17 @@ const UploadPage = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://crud-test-delta.vercel.app/delete/${id}`);
-      alert("Project deleted successfully!");
+      toast.success("Project deleted successfully!");
       fetchProjects();
     } catch (error) {
       console.error("There was an error deleting the project!", error);
+      toast.error("There was an error deleting the project!");
     }
   };
 
   return (
     <div className="lg:px-20 px-3 py-12 text-left bg-gray-100">
+      <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
       <h2 className="text-2xl text-center text-black mb-4">
         {editingProject ? "Edit Project" : "Upload New Project"}
       </h2>
@@ -173,7 +178,7 @@ const UploadPage = () => {
                   className="w-32 h-32 object-cover mb-2"
                 />
               )}
-              <h4 className="text-lg font-semibold">Nam :{project.heading}</h4>
+              <h4 className="text-lg font-semibold">Name: {project.heading}</h4>
               <p>Captions: {project.caption}</p>
               <p>
                 <strong>Languages:</strong> {project.languages}
@@ -185,18 +190,18 @@ const UploadPage = () => {
                 </a>
               </p>
               <div className="flex">
-              <button
-                onClick={() => handleEdit(project)}
-                className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDelete(project.id)}
-                className="bg-red-500 text-white px-4 py-2 rounded"
-              >
-                Delete
-              </button>
+                <button
+                  onClick={() => handleEdit(project)}
+                  className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
+                >
+                  Editts
+                </button>
+                <button
+                  onClick={() => handleDelete(project.id)}
+                  className="bg-red-500 text-white px-4 py-2 rounded"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}

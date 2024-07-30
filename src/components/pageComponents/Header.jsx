@@ -96,17 +96,22 @@ function Header() {
             <li>
               <a>CONTACT</a>
             </li>
+           
             {localStorage.getItem("authenticated") ? (
               <li>
                 <Link to={"/uploadPage"}>UPLOAD PAGE</Link>
               </li>
             ) : (
+                
               <li>
                 <a onClick={() => document.getElementById("my_modal_2").showModal()}>
                   LOGIN
                 </a>
               </li>
             )}
+            <li>
+                <a href="/resume/NIYAS-K.pdf"  download className="btn btn-outline btn-error min-h-10 h-9 rounded-lg">Donwload CV</a>
+            </li>
           </ul>
         </div>
         {localStorage.getItem("authenticated") && (
@@ -114,6 +119,7 @@ function Header() {
             Logout
           </a>
         )}
+
       </div>
 
       {/* Login Modal */}
