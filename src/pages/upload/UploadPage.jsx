@@ -194,7 +194,7 @@ const UploadPage = () => {
                   onClick={() => handleEdit(project)}
                   className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
                 >
-                  Editts
+                  Edit
                 </button>
                 <button
                   onClick={() => handleDelete(project.id)}

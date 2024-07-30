@@ -68,7 +68,11 @@ function Header() {
               </li>
             ) : (
               <li>
-                <a onClick={() => document.getElementById("my_modal_2").showModal()}>
+                <a
+                  onClick={() =>
+                    document.getElementById("my_modal_2").showModal()
+                  }
+                >
                   LOGIN
                 </a>
               </li>
@@ -78,7 +82,7 @@ function Header() {
         <a className="btn btn-ghost text-xl">NIYAS-K</a>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
         <div className="navbar-center font-semibold hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
@@ -96,30 +100,59 @@ function Header() {
             <li>
               <a>CONTACT</a>
             </li>
-           
+
             {localStorage.getItem("authenticated") ? (
               <li>
                 <Link to={"/uploadPage"}>UPLOAD PAGE</Link>
               </li>
             ) : (
-                
               <li>
-                <a onClick={() => document.getElementById("my_modal_2").showModal()}>
+                <a
+                  onClick={() =>
+                    document.getElementById("my_modal_2").showModal()
+                  }
+                >
                   LOGIN
                 </a>
               </li>
             )}
             <li>
-                <a href="/resume/NIYAS-K.pdf"  download className="btn btn-outline btn-error min-h-10 h-9 rounded-lg">Donwload CV</a>
+              <a
+                href="/resume/NIYAS-K.pdf"
+                download
+                className="btn btn-outline btn-error min-h-10 h-9 rounded-lg"
+              >
+                Donwload CV
+              </a>
             </li>
           </ul>
         </div>
         {localStorage.getItem("authenticated") && (
-          <a onClick={handleLogout} className="btn btn-outline btn-error min-h-10 h-9 rounded-lg">
-            Logout
-          </a>
-        )}
+          <>
+            {/* <a
+             
+              className="btn btn-outline btn-error min-h-10 h-9 rounded-lg"
+            >
+              Logout
+            </a> */}
+            <div className="dropdown">
+              <div className="avatar online" tabIndex={0} role="button">
+                <div className="w-10 rounded-full border">
+                  <img src="/public/image/personal/personal.jpg" />
+                </div>
 
+                <div
+                  tabIndex={0}
+                  className="dropdown-content card right-3 top-12 card-compact bg-primary text-primary-content z-[1] w-64 p-2 shadow"
+                >
+                  <div className="card-body">
+                    <a  onClick={handleLogout} className="btn">Logout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Login Modal */}
@@ -129,7 +162,10 @@ function Header() {
             <div className="w-full p-6">
               <img src="/gif/login.gif" className="rounded-lg" alt="" />
             </div>
-            <form onSubmit={handleLogin} className="w-full flex flex-col justify-center">
+            <form
+              onSubmit={handleLogin}
+              className="w-full flex flex-col justify-center"
+            >
               <div className="flex gap-3 flex-col justify-between">
                 <label className="input w-full input-bordered flex items-center gap-2">
                   <svg
@@ -169,7 +205,9 @@ function Header() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </label>
-                <button type="submit" className="btn glass">Login</button>
+                <button type="submit" className="btn glass">
+                  Login
+                </button>
               </div>
             </form>
           </div>
