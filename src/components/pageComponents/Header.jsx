@@ -135,7 +135,7 @@ function Header() {
             >
               Logout
             </a> */}
-            <div className="dropdown">
+            <div className="dropdown block">
               <div className="avatar online" tabIndex={0} role="button">
                 <div className="w-10 rounded-full border">
                   <img src="/image/personal/personal.jpg" />
