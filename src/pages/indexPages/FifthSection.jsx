@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ImageUploader from "../../components/ImageUpload";
 
 const FifthSection = () => {
   const [projects, setProjects] = useState([]);
@@ -7,8 +8,8 @@ const FifthSection = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/projects");
-        setProjects(response.data);
+        const response = await axios.get("https://crud-test-delta.vercel.app/projects");
+        setProjects(response.data.projects);
       } catch (error) {
         console.error("There was an error fetching the projects!", error);
       }
@@ -33,6 +34,9 @@ const FifthSection = () => {
                   <div className="carousel rounded-box ">
                     <div className="carousel-item w-full">
                       <img src={project.image} className="w-full" alt="Project" />
+                    </div>
+                    <div className="carousel-item w-full">
+                      <img src={ImageUploader} className="w-full" alt="Project" />
                     </div>
                   </div>
                 </div>
