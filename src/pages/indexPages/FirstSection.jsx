@@ -33,21 +33,34 @@ const FirstSection = () => {
             <p>Available for new projects</p>
           </div>
           <div className="flex gap-12 pt-12 ">
+          <a href="https://github.com/niyask123">
             <img
               src="/image/logo/logowhite/git.png"
               className="object-contain h-5"
               alt=""
             />
-            <img
-              src="/image/logo/logowhite/call.png"
-              className="object-contain h-5"
-              alt=""
-            />
+            </a>
+            <a href="tel:+918075801527">
+              <img
+                src="/image/logo/logowhite/call.png"
+                className="object-contain h-5"
+                alt=""
+              />
+            </a>
+            <a href="mailto:niyaskknr@gmail.com">
             <img
               src="/image/logo/logowhite/msg.png"
               className="object-contain h-5"
               alt=""
             />
+            </a>
+            <a href="/resume/NIYAS-K.pdf" download>
+              <img
+                src="/image/logo/goto.png"
+                className="object-contain h-5"
+                alt=""
+              />
+            </a>
           </div>
         </div>
 
