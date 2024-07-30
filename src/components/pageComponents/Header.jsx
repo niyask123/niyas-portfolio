@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -64,6 +65,9 @@ function Header() {
             </li>
             <li>
               <a>CONTACT</a>
+            </li>
+            <li>
+                <Link to={"/uploadPage"}>Login</Link>
             </li>
           </ul>
         </div>
