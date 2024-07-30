@@ -54,7 +54,7 @@ function Header() {
               <Link to={"/about-us"}>ABOUT</Link>
             </li>
             <li>
-              <a>PROJECT</a>
+              <Link to={'/projects'}>PROJECT</Link>
             </li>
             <li>
               <a>BLOG</a>
@@ -92,7 +92,7 @@ function Header() {
               <Link to={"/about-us"}>ABOUT</Link>
             </li>
             <li>
-              <a>PROJECT</a>
+              <Link to={'/projects'}>PROJECT</Link>
             </li>
             <li>
               <a>BLOG</a>

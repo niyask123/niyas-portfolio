@@ -8,6 +8,7 @@ import ImageUploader from "../components/ImageUpload";
 import PrivateRoute from "../components/PrivateRoute";
 import AboutUs from "../pages/about/About";
 import ContactUs from "../pages/contact/ContactUs";
+import Projects from "../pages/projects/Projects";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
           <Route path="/img" element={<ImageUploader />} />
           <Route path="/about-us" element={<AboutUs/>}/>
           <Route path="/contact-us" element={<ContactUs/>}/>
+          <Route path="/projects" element={<Projects/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
