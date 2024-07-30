@@ -166,7 +166,7 @@ const UploadPage = () => {
         </button>
       </form>
 
-      <div className="mt-8">
+      <div className="mt-8 overflow-hidden">
         <h3 className="text-xl mb-4 text-center text-black">Uploaded Projects List</h3>
         <div className="grid lg:grid-cols-3 gap-2">
           {projects.map((project) => (
