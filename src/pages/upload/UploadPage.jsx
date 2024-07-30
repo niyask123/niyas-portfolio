@@ -96,7 +96,7 @@ const UploadPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://crud-test-delta.vercel.app/upload/${id}`);
+      await axios.delete(`https://crud-test-delta.vercel.app/delete/${id}`);
       alert("Project deleted successfully!");
       fetchProjects();
     } catch (error) {
@@ -163,7 +163,7 @@ const UploadPage = () => {
 
       <div className="mt-8">
         <h3 className="text-xl mb-4 text-center text-black">Uploaded Projects List</h3>
-        <div className="grid lg:grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-2">
           {projects.map((project) => (
             <div key={project.id} className="mb-4 flex flex-col gap-3 text-center items-center border-2 p-4 rounded">
               {project.image && (
