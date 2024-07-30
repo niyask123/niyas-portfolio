@@ -105,11 +105,11 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="px-20 py-12 text-left bg-gray-100">
-      <h2 className="text-2xl text-center text-gray-400 mb-4">
+    <div className="lg:px-20 px-3 py-12 text-left bg-gray-100">
+      <h2 className="text-2xl text-center text-black mb-4">
         {editingProject ? "Edit Project" : "Upload New Project"}
       </h2>
-      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3 px-36">
+      <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-3 lg:px-36">
         <input
           className="bg-black pt-1 px-2 rounded-lg"
           type="file"
@@ -162,10 +162,10 @@ const UploadPage = () => {
       </form>
 
       <div className="mt-8">
-        <h3 className="text-xl mb-4">Uploaded Projects</h3>
-        <ul>
+        <h3 className="text-xl mb-4 text-center text-black">Uploaded Projects List</h3>
+        <div className="grid lg:grid-cols-3 gap-2">
           {projects.map((project) => (
-            <li key={project.id} className="mb-4 border p-4 rounded">
+            <div key={project.id} className="mb-4 flex flex-col gap-3 text-center items-center border-2 p-4 rounded">
               {project.image && (
                 <img
                   src={project.image}
@@ -173,17 +173,18 @@ const UploadPage = () => {
                   className="w-32 h-32 object-cover mb-2"
                 />
               )}
-              <h4 className="text-lg font-semibold">{project.heading}</h4>
-              <p>{project.caption}</p>
+              <h4 className="text-lg font-semibold">Nam :{project.heading}</h4>
+              <p>Captions: {project.caption}</p>
               <p>
                 <strong>Languages:</strong> {project.languages}
               </p>
               <p>
                 <strong>URL:</strong>{" "}
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
+                <a href={project.url} target="_blank" className="text-xs" rel="noopener noreferrer">
                   {project.url}
                 </a>
               </p>
+              <div className="flex">
               <button
                 onClick={() => handleEdit(project)}
                 className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
@@ -196,9 +197,10 @@ const UploadPage = () => {
               >
                 Delete
               </button>
-            </li>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

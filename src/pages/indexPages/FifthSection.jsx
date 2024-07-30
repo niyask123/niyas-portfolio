@@ -25,11 +25,11 @@ const FifthSection = () => {
         <p>Some of the noteworthy projects I have built:</p>
       </div>
 
-      <div className="flex flex-col px-40 py-10 gap-3 text-white">
+      <div className="flex flex-col lg:px-40 py-10 gap-3 text-white">
         <div className="mt-10 flex flex-col gap-3">
           {projects.map((project, index) => (
             <div key={index} className="flex flex-col gap-5 text-white">
-              <div className="flex">
+              <div className="flex lg:flex-row flex-col">
                 <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-6 w-full">
                   <div className="carousel rounded-box ">
                     <div className="carousel-item w-full">
