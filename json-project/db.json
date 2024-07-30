@@ -1,20 +1,3 @@
 {
-  "projects": [
-    {
-      "id": "3c9c",
-      "image": "blob:http://localhost:5174/733516c6-894e-4d97-8998-015799f43b71",
-      "heading": "New Project 111",
-      "caption": "Nothing",
-      "languages": "lajsdfjlasjdf, ksfhkjdshf, sjflksjd",
-      "url": "https://tailwindcss.com/docs/border-radius"
-    },
-    {
-      "id": "2363",
-      "image": "blob:http://localhost:5174/7f0dd39c-e10d-4932-8d30-adb6e83dad90",
-      "heading": "Niyas",
-      "caption": "dsfdf",
-      "languages": "js, php, json",
-      "url": "https://daisyui.com/components/carousel/"
-    }
-  ]
+  "projects": []
 }
