@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="navbar bg-natural px-20">
+    <div className="navbar bg-natural lg:px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,22 +26,23 @@ function Header() {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Item 1</a>
+             <li>
+              <Link to={"/"}>HOME</Link>
             </li>
             <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <a>ABOUT</a>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>PROJECT</a>
+            </li>
+            <li>
+              <a>BLOG</a>
+            </li>
+            <li>
+              <a>CONTACT</a>
+            </li>
+            <li>
+                <Link to={"/uploadPage"}>LOGIN</Link>
             </li>
           </ul>
         </div>

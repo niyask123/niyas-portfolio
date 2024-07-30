@@ -3,12 +3,12 @@ import React from "react";
 const ThirdSection = () => {
   return (
     <>
-      <div className=" px-20 flex-row gap-12 py-12 text-left justify-between bg-black">
+      <div className=" lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between bg-black">
         <div className="text-center flex-col gap-3 items-center flex justify-center">
           <p className="bg-[#374151] px-3 py-1 w-fit rounded-lg ">Skills</p>
           <p>The skills, tools and technologies I am really good at:</p>
         </div>
-        <div className="grid grid-cols-8 gap-3 pt-16">
+        <div className="grid grid-cols-2 lg:grid-cols-8 gap-3 pt-16">
           <div className="flex flex-col gap-3 text-center">
             <img
               src="/image/logo/skills/react.svg"

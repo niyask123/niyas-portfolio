@@ -3,8 +3,8 @@ import React from "react";
 const SecondSection = () => {
   return (
     <>
-      <div className="flex px-20 flex-row gap-12 py-10 text-left justify-between">
-        <div className="w-full">
+      <div className="flex px-3 text-justify  lg:px-20 flex-row gap-12 py-10 lg:text-left justify-between">
+        <div className="w-full lg:block hidden ">
           <img
             src="/image/personal/niyas2.png"
             className="object-contain rounded-lg h-96"
