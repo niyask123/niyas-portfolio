@@ -25,7 +25,7 @@ const ThemeToggle = () => {
     <button  className="p-2 rounded-full border border-red-600 fixed right-3 bottom-2 z-30">
         <div className="flex justify-center gap-2 items-center">
             <p>Call</p>
-            <img src="/public/image/logo/logowhite/call.png" className='object-contain h-4' alt="" />
+            <img src="/image/logo/logowhite/call.png" className='object-contain h-4' alt="" />
         </div>
         </button>
 
