@@ -2,7 +2,8 @@ import React from "react";
 
 const FirstSection = () => {
   return (
-    <div className="flex lg:px-20 px-6 flex-row gap-12 py-12 text-left justify-between bg-base-100 text-base-content">
+ <>
+   <div className="flex lg:px-20 px-6 flex-row gap-12 py-12 text-left justify-between bg-base-100 text-base-content">
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl lg:text-5xl">Hi, I’m Niyas K 👋</h1>
         <p>
@@ -69,6 +70,9 @@ const FirstSection = () => {
         />
       </div>
     </div>
+    <hr className="border-[#1d232a] mx-6" />
+    
+    </> 
   );
 };
 
