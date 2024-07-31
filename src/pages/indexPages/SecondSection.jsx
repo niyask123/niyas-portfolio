@@ -13,7 +13,7 @@ const SecondSection = () => {
         </div>
         <div className="flex flex-col gap-4 justify-center">
           <div className="flex text-center  items-center justify-center">
-            <span className="bg-[#374151] px-3 py-1 rounded-lg ">About Me</span>
+            <span className="bg-[#374151] text-white px-3 py-1 rounded-lg ">About Me</span>
           </div>
           <h4 className="">
             I am a dedicated React.js developer passionate about crafting

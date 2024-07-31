@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ThemeToggle from "../DarkLight";
 
 function Header() {
   const [username, setUsername] = useState("");
@@ -159,6 +160,7 @@ function Header() {
                 />
                 <a>BLOG</a>
               </div>
+             
             </li>
             <li>
               <div className="flex justify-center items-center">
@@ -298,6 +300,7 @@ function Header() {
           <button>Close</button>
         </form>
       </dialog>
+      <ThemeToggle />
     </div>
   );
 }

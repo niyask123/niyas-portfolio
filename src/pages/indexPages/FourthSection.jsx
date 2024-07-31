@@ -5,7 +5,7 @@ const FourthSection = () => {
     <>
       <div className=" lg:px-20 flex-row gap-12 py-12 text-left justify-between">
         <div className="text-center flex-col gap-3 items-center flex justify-center">
-          <p className="bg-[#374151] px-3 py-1 w-fit rounded-lg ">Experience</p>
+          <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg ">Experience</p>
           <p>Here is a quick summary of my most recent experiences:</p>
         </div>
 

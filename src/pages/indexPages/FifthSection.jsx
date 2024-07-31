@@ -21,9 +21,9 @@ const FifthSection = () => {
   }, []);
 
   return (
-    <div className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between bg-black">
+    <div className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between ">
       <div className="text-center flex-col gap-3 items-center flex justify-center">
-        <p className="bg-[#374151] px-3 py-1 w-fit rounded-lg ">Work</p>
+        <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg ">Work</p>
         <p>Some of the noteworthy projects I have built:</p>
       </div>
 

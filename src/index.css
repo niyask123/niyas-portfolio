@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "daisyui";
 
 h1{
   @apply text-3xl font-bold;
