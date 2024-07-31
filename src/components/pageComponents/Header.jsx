@@ -115,7 +115,9 @@ function Header() {
             )}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">NIYAS-K</a>
+        <a className=" text-xl">
+            <img src="/image/logo.png" className="object-contain w-16" alt="" />
+        </a>
       </div>
 
       <div className="navbar-end gap-2">
