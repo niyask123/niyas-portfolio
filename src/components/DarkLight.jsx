@@ -14,13 +14,23 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button onClick={toggleTheme} className="p-2 rounded-full border border-red-600 fixed right-3 bottom-9">
+    <>
+    <button onClick={toggleTheme} className="p-2 rounded-full border border-red-600 fixed right-3 bottom-16 z-30">
       {theme === 'light' ? (
         <FiMoon className="w-6 h-6" />
       ) : (
         <FiSun className="w-6 h-6" />
       )}
     </button>
+    <button  className="p-2 rounded-full border border-red-600 fixed right-3 bottom-2 z-30">
+        <div className="flex justify-center gap-2 items-center">
+            <p>Call</p>
+            <img src="/public/image/logo/logowhite/call.png" className='object-contain h-4' alt="" />
+        </div>
+        </button>
+
+
+    </>
   );
 };
 
