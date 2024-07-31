@@ -4,7 +4,7 @@ import FifthSection from "../indexPages/FifthSection";
 const Projects = () => {
   return (
     <>
-      <h1 className="py-6 bg-black">PROJECTS</h1>
+      <h1 className="py-6">PROJECTS</h1>
       <div>
         <FifthSection />
       </div>
