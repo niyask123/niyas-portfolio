@@ -1,12 +1,15 @@
-import React from 'react'
-import FifthSection from '../indexPages/FifthSection'
+import React from "react";
+import FifthSection from "../indexPages/FifthSection";
 
 const Projects = () => {
   return (
-    <div>
-        <FifthSection/>
-    </div>
-  )
-}
+    <>
+      <h1 className="py-6 bg-black">PROJECTS</h1>
+      <div>
+        <FifthSection />
+      </div>
+    </>
+  );
+};
 
-export default Projects
+export default Projects;

@@ -8,7 +8,9 @@ const FifthSection = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("https://crud-test-delta.vercel.app/projects");
+        const response = await axios.get(
+          "https://crud-test-delta.vercel.app/projects"
+        );
         setProjects(response.data.projects);
       } catch (error) {
         console.error("There was an error fetching the projects!", error);
@@ -29,33 +31,99 @@ const FifthSection = () => {
         <div className="mt-10 flex flex-col gap-3">
           {projects.map((project, index) => (
             <div key={index} className="flex flex-col gap-5 text-white">
-              <div className="flex lg:flex-row flex-col">
-                <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-2 lg:p-6 w-full">
-                  <div className="carousel rounded-box ">
-                    <div className="carousel-item w-full">
-                      <img src={project.image} className="w-full" alt="Project" />
+              {index % 2 === 0 ? (
+                <div className="flex lg:flex-row flex-col">
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-2 lg:p-6 w-full">
+                    <div className="carousel rounded-box ">
+                      <div className="carousel-item w-full">
+                        <img
+                          src={project.image}
+                          className="w-full"
+                          alt="Project"
+                        />
+                      </div>
+                      <div className="carousel-item w-full">
+                        <img
+                          src={ImageUploader}
+                          className="w-full"
+                          alt="Project"
+                        />
+                      </div>
                     </div>
-                    <div className="carousel-item w-full">
-                      <img src={ImageUploader} className="w-full" alt="Project" />
+                  </div>
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full rounded-lg rounded-ss-none rounded-es-none">
+                    <div className="flex justify-between w-full">
+                      <p className="text-2xl ">{project.heading}</p>
+                      <p className="w-3 bg-green-600 rounded-full h-3"></p>
+                    </div>
+                    <p className="font-thin">{project.caption}</p>
+                    <div className="flex gap-3">
+                      {project.languages.split(",").map((lang, i) => (
+                        <p key={i} className="btn rounded-full h-4 min-h-8">
+                          {lang}
+                        </p>
+                      ))}
+                    </div>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/image/logo/goto.png"
+                        className="object-contain h-8 mt-6 w-10"
+                        alt="Go to project"
+                      />
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex lg:flex-row flex-col">
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full rounded-lg rounded-ss-none rounded-es-none">
+                    <div className="flex justify-between w-full">
+                      <p className="text-2xl ">{project.heading}</p>
+                      <p className="w-3 bg-green-600 rounded-full h-3"></p>
+                    </div>
+                    <p className="font-thin">{project.caption}</p>
+                    <div className="flex gap-3">
+                      {project.languages.split(",").map((lang, i) => (
+                        <p key={i} className="btn rounded-full h-4 min-h-8">
+                          {lang}
+                        </p>
+                      ))}
+                    </div>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/image/logo/goto.png"
+                        className="object-contain h-8 mt-6 w-10"
+                        alt="Go to project"
+                      />
+                    </a>
+                  </div>
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-2 lg:p-6 w-full">
+                    <div className="carousel rounded-box ">
+                      <div className="carousel-item w-full">
+                        <img
+                          src={project.image}
+                          className="w-full"
+                          alt="Project"
+                        />
+                      </div>
+                      <div className="carousel-item w-full">
+                        <img
+                          src={ImageUploader}
+                          className="w-full"
+                          alt="Project"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-[.5] rounded-lg rounded-ss-none rounded-es-none gap-3 flex-col bg-[#2f5d9e] p-6 w-full">
-                  <div className="flex justify-between w-full">
-                    <p className="text-2xl ">{project.heading}</p>
-                    <p className="w-3 bg-green-600 rounded-full h-3"></p>
-                  </div>
-                  <p className="font-thin">{project.caption}</p>
-                  <div className="flex gap-3">
-                    {project.languages.split(",").map((lang, i) => (
-                      <p key={i} className="btn rounded-full h-4 min-h-8">{lang}</p>
-                    ))}
-                  </div>
-                  <a href={project.url} target="_blank" rel="noopener noreferrer">
-                    <img src="/image/logo/goto.png" className="object-contain h-8 mt-6 w-10" alt="Go to project" />
-                  </a>
-                </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
