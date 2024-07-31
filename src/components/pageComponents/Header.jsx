@@ -50,7 +50,7 @@ function Header() {
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">
                 <img
-                  src="/public/image/logo/logowhite/home.png"
+                  src="/image/logo/logowhite/home.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -60,7 +60,7 @@ function Header() {
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">
                 <img
-                  src="/public/image/logo/logowhite/Portfolio.png"
+                  src="/image/logo/logowhite/Portfolio.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -70,7 +70,7 @@ function Header() {
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">
                 <img
-                  src="/public/image/logo/logowhite/Services.png"
+                  src="/image/logo/logowhite/Services.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -80,7 +80,7 @@ function Header() {
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">
                 <img
-                  src="/public/image/logo/logowhite/Blog.png"
+                  src="/image/logo/logowhite/Blog.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -90,7 +90,7 @@ function Header() {
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">
                 <img
-                  src="/public/image/logo/logowhite/msgcontact.png"
+                  src="/image/logo/logowhite/msgcontact.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -123,7 +123,7 @@ function Header() {
             <li>
               <div className="flex justify-center items-center">
                 <img
-                  src="/public/image/logo/logowhite/home.png"
+                  src="/image/logo/logowhite/home.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -133,7 +133,7 @@ function Header() {
             <li>
               <div className="flex justify-center items-center">
                 <img
-                  src="/public/image/logo/logowhite/Portfolio.png"
+                  src="/image/logo/logowhite/Portfolio.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -143,7 +143,7 @@ function Header() {
             <li>
               <div className="flex justify-center items-center">
                 <img
-                  src="/public/image/logo/logowhite/Services.png"
+                  src="/image/logo/logowhite/Services.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -153,7 +153,7 @@ function Header() {
             <li>
               <div className="flex justify-center items-center">
                 <img
-                  src="/public/image/logo/logowhite/Blog.png"
+                  src="/image/logo/logowhite/Blog.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -163,7 +163,7 @@ function Header() {
             <li>
               <div className="flex justify-center items-center">
                 <img
-                  src="/public/image/logo/logowhite/msgcontact.png"
+                  src="/image/logo/logowhite/msgcontact.png"
                   className="object-contain h-4"
                   alt=""
                 />
@@ -178,7 +178,7 @@ function Header() {
             ) : (
               <li>
                 <div className="flex">
-                  <img src="/public/image/logo/logowhite/cv.png" alt="" />
+                  <img src="/image/logo/logowhite/cv.png" alt="" />
                   <a
                     onClick={() =>
                       document.getElementById("my_modal_2").showModal()
@@ -193,9 +193,16 @@ function Header() {
               <a
                 href="/resume/NIYAS-K.pdf"
                 download
-                className="btn btn-outline btn-error min-h-10 h-9 rounded-lg"
+                className="btn btn-error min-h-10 h-9 rounded-lg"
               >
-                Donwload CV
+                <div className="flex gap-2">
+                  <p>Donwload CV</p>
+                  <img
+                    src="/image/logo/logowhite/download.png"
+                    className="object-contain"
+                    alt=""
+                  />
+                </div>
               </a>
             </li>
           </ul>
