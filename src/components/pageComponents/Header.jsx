@@ -48,19 +48,54 @@ function Header() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link to={"/"}>HOME</Link>
+              <div className="flex justify-between pr-20 py-2 items-center">
+                <img
+                  src="/public/image/logo/logowhite/home.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/"}>HOME</Link>
+              </div>
             </li>
             <li>
-              <Link to={"/about-us"}>ABOUT</Link>
+              <div className="flex justify-between pr-20 py-2 items-center">
+                <img
+                  src="/public/image/logo/logowhite/Portfolio.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/about-us"}>ABOUT</Link>
+              </div>
             </li>
             <li>
-              <Link to={'/projects'}>PROJECT</Link>
+              <div className="flex justify-between pr-20 py-2 items-center">
+                <img
+                  src="/public/image/logo/logowhite/Services.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/projects"}>PROJECT</Link>
+              </div>
             </li>
             <li>
-              <a>BLOG</a>
+              <div className="flex justify-between pr-20 py-2 items-center">
+                <img
+                  src="/public/image/logo/logowhite/Blog.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <a>BLOG</a>
+              </div>
             </li>
             <li>
-              <Link to={"/contact-us"}>CONTACT</Link>
+              <div className="flex justify-between pr-20 py-2 items-center">
+                <img
+                  src="/public/image/logo/logowhite/msgcontact.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/contact-us"}>CONTACT</Link>
+              </div>
             </li>
             {localStorage.getItem("authenticated") ? (
               <li>
@@ -86,19 +121,54 @@ function Header() {
         <div className="navbar-center font-semibold hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to={"/"}>HOME</Link>
+              <div className="flex justify-center items-center">
+                <img
+                  src="/public/image/logo/logowhite/home.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/"}>HOME</Link>
+              </div>
             </li>
             <li>
-              <Link to={"/about-us"}>ABOUT</Link>
+              <div className="flex justify-center items-center">
+                <img
+                  src="/public/image/logo/logowhite/Portfolio.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/about-us"}>ABOUT</Link>
+              </div>
             </li>
             <li>
-              <Link to={'/projects'}>PROJECT</Link>
+              <div className="flex justify-center items-center">
+                <img
+                  src="/public/image/logo/logowhite/Services.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/projects"}>PROJECT</Link>
+              </div>
             </li>
             <li>
-              <a>BLOG</a>
+              <div className="flex justify-center items-center">
+                <img
+                  src="/public/image/logo/logowhite/Blog.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <a>BLOG</a>
+              </div>
             </li>
             <li>
-              <Link to={"/contact-us"}>CONTACT</Link>
+              <div className="flex justify-center items-center">
+                <img
+                  src="/public/image/logo/logowhite/msgcontact.png"
+                  className="object-contain h-4"
+                  alt=""
+                />
+                <Link to={"/contact-us"}>CONTACT</Link>
+              </div>
             </li>
 
             {localStorage.getItem("authenticated") ? (
@@ -107,13 +177,16 @@ function Header() {
               </li>
             ) : (
               <li>
-                <a
-                  onClick={() =>
-                    document.getElementById("my_modal_2").showModal()
-                  }
-                >
-                  LOGIN
-                </a>
+                <div className="flex">
+                  <img src="/public/image/logo/logowhite/cv.png" alt="" />
+                  <a
+                    onClick={() =>
+                      document.getElementById("my_modal_2").showModal()
+                    }
+                  >
+                    LOGIN
+                  </a>
+                </div>
               </li>
             )}
             <li>
@@ -146,7 +219,9 @@ function Header() {
                   className="dropdown-content card right-3 top-12 card-compact bg-primary text-primary-content z-[1] w-64 p-2 shadow"
                 >
                   <div className="card-body">
-                    <a  onClick={handleLogout} className="btn">Logout</a>
+                    <a onClick={handleLogout} className="btn">
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
