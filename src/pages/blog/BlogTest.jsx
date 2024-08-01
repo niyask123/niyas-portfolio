@@ -7,9 +7,9 @@ function BlogTest() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [blogUrlLinks, setBlogUrlLinks] = useState("");
-  const [blogPostDate, setBlogPostDate] = useState(""); // New state
+  const [blogPostDate, setBlogPostDate] = useState("");
   const [posts, setPosts] = useState([]);
-  const [editingPost, setEditingPost] = useState(null); // State for editing
+  const [editingPost, setEditingPost] = useState(null);
 
   const fetchPosts = async () => {
     try {
@@ -30,44 +30,35 @@ function BlogTest() {
     formData.append("heading", heading);
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("blogPostDate", blogPostDate); // Add date
+    formData.append("blogPostDate", blogPostDate);
     formData.append("blogUrlLinks", blogUrlLinks);
-    formData.append("image", image);
+    if (image) {
+      formData.append("image", image);
+    }
 
     try {
       if (editingPost) {
-        // Update existing post
         await axios.put(
           `https://blog-backend-beta-one.vercel.app/posts/${editingPost.id}`,
           formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
+          { headers: { "Content-Type": "multipart/form-data" } }
         );
         alert("Blog post successfully updated!");
       } else {
-        // Create new post
         await axios.post(
           "https://blog-backend-beta-one.vercel.app/upload",
           formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
+          { headers: { "Content-Type": "multipart/form-data" } }
         );
         alert("Blog post successfully uploaded!");
       }
 
-      // Reset form and state
       setHeading("");
       setTitle("");
       setDescription("");
       setImage(null);
       setBlogUrlLinks("");
-      setBlogPostDate(""); // Reset date
+      setBlogPostDate("");
       setEditingPost(null);
       fetchPosts();
     } catch (error) {
@@ -82,8 +73,8 @@ function BlogTest() {
     setDescription(post.description);
     setBlogUrlLinks(post.blogUrlLinks);
     setBlogPostDate(post.blogPostDate);
-    setImage(null); // Set image separately if needed
-    setEditingPost(post); // Set post to be edited
+    setImage(null);
+    setEditingPost(post);
   };
 
   const handleDelete = async (postId) => {
@@ -161,12 +152,12 @@ function BlogTest() {
         {posts.map((post) => (
           <div className="grid gap-3 grid-cols-5 px-36 py-6" key={post.id}>
             <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
-              <img src={post.imageUrl} alt={post.title} />
+              {post.imageUrl && <img src={post.imageUrl} alt={post.title} />}
               <h3>Header : {post.heading}</h3>
               <p>Title : {post.title}</p>
               <p>Description : {post.description}</p>
               <p>Post Link : {post.blogUrlLinks}</p>
-              <p>Date : {post.blogPostDate}</p> {/* Display date */}
+              <p>Date : {new Date(post.blogPostDate).toLocaleDateString()}</p>
               <div className="flex justify-center gap-3">
                 <button
                   className="btn bg-green-200"
