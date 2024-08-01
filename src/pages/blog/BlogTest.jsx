@@ -7,6 +7,7 @@ function BlogTest() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [blogUrlLinks, setBlogUrlLinks] = useState("");
+  const [blogPostDate, setBlogPostDate] = useState(""); // New state
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
@@ -17,6 +18,7 @@ function BlogTest() {
       console.error("Error fetching posts:", error);
     }
   };
+  
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -27,6 +29,7 @@ function BlogTest() {
     formData.append("heading", heading);
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("blogPostDate", blogPostDate); // Add date
     formData.append("blogUrlLinks", blogUrlLinks);
     formData.append("image", image);
 
@@ -47,6 +50,7 @@ function BlogTest() {
       setDescription("");
       setImage(null);
       setBlogUrlLinks("");
+      setBlogPostDate(""); // Reset date
       fetchPosts();
     } catch (error) {
       console.error("Error uploading blog post:", error);
@@ -75,7 +79,7 @@ function BlogTest() {
         <div className="flex flex-col w-full">
           <label className="text-start">Heading:</label>
           <input
-          className="p-2 rounded-lg border-2 border-green-500"
+            className="p-2 rounded-lg border-2 border-green-500"
             type="text"
             value={heading}
             onChange={(e) => setHeading(e.target.value)}
@@ -84,7 +88,7 @@ function BlogTest() {
         <div className="flex flex-col w-full">
           <label className="text-start">Title:</label>
           <input
-          className="p-2 rounded-lg border-2 border-green-500"
+            className="p-2 rounded-lg border-2 border-green-500"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -93,7 +97,7 @@ function BlogTest() {
         <div className="flex flex-col w-full">
           <label className="text-start">Description:</label>
           <textarea
-          className="p-2 rounded-lg border-2 border-green-500"
+            className="p-2 rounded-lg border-2 border-green-500"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -101,48 +105,56 @@ function BlogTest() {
         <div className="flex flex-col w-full">
           <label className="text-start">Blog URL Links:</label>
           <input
-          className="p-2 rounded-lg border-2 border-green-500"
+            className="p-2 rounded-lg border-2 border-green-500"
             type="text"
             value={blogUrlLinks}
             onChange={(e) => setBlogUrlLinks(e.target.value)}
           />
         </div>
         <div className="flex flex-col w-full">
+          <label className="text-start">Blog Post Date:</label>
+          <input
+            className="p-2 rounded-lg border-2 border-green-500"
+            type="date"
+            value={blogPostDate}
+            onChange={(e) => setBlogPostDate(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col w-full">
           <label className="text-start">Image:</label>
           <input
-          className="p-2 rounded-lg border-2 border-green-500"
-           type="file" onChange={(e) => setImage(e.target.files[0])} />
+            className="p-2 rounded-lg border-2 border-green-500"
+            type="file" onChange={(e) => setImage(e.target.files[0])} />
         </div>
         <button className="btn mt-6 bg-green-800" type="submit">Submit</button>
       </form>
       <h2 className="py-12">Existing Blog Posts</h2>
       <ul>
         {posts.map((post) => (
-          <>
-            <div className="grid gap-3 grid-cols-5 px-8 py-6">
-              <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg" key={post.id}>
-                <img src={post.imageUrl} alt={post.title} />
-                <h3>Header :{post.heading}</h3>
-                <p>Titile :{post.title}</p>
-                <p>Post Descripton :{post.description}</p>
-                <p>Post Link :{post.blogUrlLinks}</p>
-                <div className="flex justify-center gap-3">
-                  <button
-                    className="btn bg-green-200"
-                    onClick={() => handleEdit(post.id)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn bg-red-200"
-                    onClick={() => handleDelete(post.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
+          <div className="grid gap-3 grid-cols-5 px-36 py-6" key={post.id}>
+            <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
+              <img src={post.imageUrl} alt={post.title} />
+              <h3>Header : {post.heading}</h3>
+              <p>Title : {post.title}</p>
+              <p>Description : {post.description}</p>
+              <p>Post Link : {post.blogUrlLinks}</p>
+              <p>Date : {post.blogPostDate}</p> {/* Display date */}
+              <div className="flex justify-center gap-3">
+                <button
+                  className="btn bg-green-200"
+                  onClick={() => handleEdit(post.id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn bg-red-200"
+                  onClick={() => handleDelete(post.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </ul>
     </div>
