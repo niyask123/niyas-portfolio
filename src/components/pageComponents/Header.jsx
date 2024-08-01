@@ -13,7 +13,7 @@ function Header() {
     if (username === "niyas_k" && password === "niyaskknr@gmail.com") {
       localStorage.setItem("authenticated", "true");
       document.getElementById("my_modal_2").close();
-      navigate("/uploadPage");
+      navigate("/dashboard");
     } else {
       alert("Invalid credentials");
     }

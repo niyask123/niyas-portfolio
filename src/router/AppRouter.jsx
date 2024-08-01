@@ -9,6 +9,8 @@ import PrivateRoute from "../components/PrivateRoute";
 import AboutUs from "../pages/about/About";
 import ContactUs from "../pages/contact/ContactUs";
 import Projects from "../pages/projects/Projects";
+import BlogTest from "../pages/blog/BlogTest";
+import LoginIndex from "../pages/loginDashboard/LoginIndex";
 
 const AppRouter = () => {
   return (
@@ -21,6 +23,9 @@ const AppRouter = () => {
           <Route path="/about-us" element={<AboutUs/>}/>
           <Route path="/contact-us" element={<ContactUs/>}/>
           <Route path="/projects" element={<Projects/>}/>
+          <Route path="/test" element={<BlogTest/>}/>
+          <Route path="/login-index" element={<LoginIndex/>}/>
+          
         </Route>
       </Routes>
     </BrowserRouter>
