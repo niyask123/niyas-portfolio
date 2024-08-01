@@ -15,7 +15,7 @@ const BlogIndex = () => {
                 </div>
                 <h3>lajsdfljd</h3>
                 <p>Caption</p>
-                <img src="/public/image/items/firstbg.png" alt="" />
+                <img src="/image/items/firstbg.png" alt="" />
                 <p className="text-xs">Description</p>
                 <Link href="" className="text-end">Link</Link>
               </div>
