@@ -9,6 +9,7 @@ function BlogTest() {
   const [blogUrlLinks, setBlogUrlLinks] = useState("");
   const [blogPostDate, setBlogPostDate] = useState(""); // New state
   const [posts, setPosts] = useState([]);
+  const [editingPost, setEditingPost] = useState(null); // State for editing
 
   const fetchPosts = async () => {
     try {
@@ -18,7 +19,7 @@ function BlogTest() {
       console.error("Error fetching posts:", error);
     }
   };
-  
+
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -34,32 +35,55 @@ function BlogTest() {
     formData.append("image", image);
 
     try {
-      const response = await axios.post(
-        "https://blog-backend-beta-one.vercel.app/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("Blog post uploaded:", response.data);
-      alert("Blog post successfully uploaded!");
+      if (editingPost) {
+        // Update existing post
+        await axios.put(
+          `https://blog-backend-beta-one.vercel.app/posts/${editingPost.id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        alert("Blog post successfully updated!");
+      } else {
+        // Create new post
+        await axios.post(
+          "https://blog-backend-beta-one.vercel.app/upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        alert("Blog post successfully uploaded!");
+      }
+
+      // Reset form and state
       setHeading("");
       setTitle("");
       setDescription("");
       setImage(null);
       setBlogUrlLinks("");
       setBlogPostDate(""); // Reset date
+      setEditingPost(null);
       fetchPosts();
     } catch (error) {
-      console.error("Error uploading blog post:", error);
-      alert("Error uploading blog post. Please try again.");
+      console.error("Error uploading or updating blog post:", error);
+      alert("Error uploading or updating blog post. Please try again.");
     }
   };
 
-  const handleEdit = async (postId) => {
-    // Implement edit logic here
+  const handleEdit = (post) => {
+    setHeading(post.heading);
+    setTitle(post.title);
+    setDescription(post.description);
+    setBlogUrlLinks(post.blogUrlLinks);
+    setBlogPostDate(post.blogPostDate);
+    setImage(null); // Set image separately if needed
+    setEditingPost(post); // Set post to be edited
   };
 
   const handleDelete = async (postId) => {
@@ -124,9 +148,13 @@ function BlogTest() {
           <label className="text-start">Image:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
-            type="file" onChange={(e) => setImage(e.target.files[0])} />
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
         </div>
-        <button className="btn mt-6 bg-green-800" type="submit">Submit</button>
+        <button className="btn mt-6 bg-green-800" type="submit">
+          {editingPost ? "Update" : "Submit"}
+        </button>
       </form>
       <h2 className="py-12">Existing Blog Posts</h2>
       <ul>
@@ -142,7 +170,7 @@ function BlogTest() {
               <div className="flex justify-center gap-3">
                 <button
                   className="btn bg-green-200"
-                  onClick={() => handleEdit(post.id)}
+                  onClick={() => handleEdit(post)}
                 >
                   Edit
                 </button>
