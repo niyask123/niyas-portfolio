@@ -11,7 +11,7 @@ function BlogTest() {
     date: '',
     image: null,
   });
-  const [editMode, setEditMode] = useState(false);
+  const [editing, setEditing] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ function BlogTest() {
 
     try {
       setLoading(true);
-      if (editMode) {
+      if (editing) {
         await axios.put(`http://localhost:5801/api/blogs/${currentBlogId}`, formDataToSend);
       } else {
         await axios.post('http://localhost:5801/api/blogs', formDataToSend);
@@ -48,9 +48,8 @@ function BlogTest() {
         date: '',
         image: null,
       });
-      setEditMode(false);
+      setEditing(false);
       setCurrentBlogId(null);
-      alert('Blog post submitted successfully');
     } catch (error) {
       console.error('Error submitting blog post:', error);
       setError('Error submitting blog post');
@@ -78,23 +77,20 @@ function BlogTest() {
       title: blog.title,
       description: blog.description,
       blogURL: blog.blogURL,
-      date: blog.date,
+      date: new Date(blog.date).toISOString().split('T')[0],
       image: null,
     });
-    setEditMode(true);
+    setEditing(true);
     setCurrentBlogId(blog.id);
   };
 
   const handleDelete = async (id) => {
     try {
-      setLoading(true);
       await axios.delete(`http://localhost:5801/api/blogs/${id}`);
       fetchBlogs();
     } catch (error) {
       console.error('Error deleting blog post:', error);
       setError('Error deleting blog post');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -163,7 +159,7 @@ function BlogTest() {
           />
         </div>
         <button className="btn mt-6 bg-green-800" type="submit" disabled={loading}>
-          {loading ? 'Submitting...' : 'Submit'}
+          {loading ? 'Submitting...' : editing ? 'Update' : 'Submit'}
         </button>
       </form>
       {error && <p className="text-red-500">{error}</p>}
