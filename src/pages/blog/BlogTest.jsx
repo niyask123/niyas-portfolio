@@ -1,101 +1,106 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function BlogTest() {
-  const [heading, setHeading] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
-  const [blogUrlLinks, setBlogUrlLinks] = useState("");
-  const [blogPostDate, setBlogPostDate] = useState(""); // New state
-  const [posts, setPosts] = useState([]);
-  const [editingPost, setEditingPost] = useState(null); // State for editing
+  const [blogs, setBlogs] = useState([]);
+  const [formData, setFormData] = useState({
+    heading: '',
+    title: '',
+    description: '',
+    blogURL: '',
+    date: '',
+    image: null,
+  });
+  const [editMode, setEditMode] = useState(false);
+  const [currentBlogId, setCurrentBlogId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const fetchPosts = async () => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      formDataToSend.append(key, formData[key]);
+    }
+
     try {
-      const response = await axios.get("https://blog-backend-beta-one.vercel.app/posts");
-      setPosts(response.data);
+      setLoading(true);
+      if (editMode) {
+        await axios.put(`http://localhost:5801/api/blogs/${currentBlogId}`, formDataToSend);
+      } else {
+        await axios.post('http://localhost:5801/api/blogs', formDataToSend);
+      }
+      fetchBlogs();
+      setFormData({
+        heading: '',
+        title: '',
+        description: '',
+        blogURL: '',
+        date: '',
+        image: null,
+      });
+      setEditMode(false);
+      setCurrentBlogId(null);
+      alert('Blog post submitted successfully');
     } catch (error) {
-      console.error("Error fetching posts:", error);
+      console.error('Error submitting blog post:', error);
+      setError('Error submitting blog post');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get('http://localhost:5801/api/blogs');
+      setBlogs(response.data);
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+      setError('Error fetching blogs');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEdit = (blog) => {
+    setFormData({
+      heading: blog.heading,
+      title: blog.title,
+      description: blog.description,
+      blogURL: blog.blogURL,
+      date: blog.date,
+      image: null,
+    });
+    setEditMode(true);
+    setCurrentBlogId(blog.id);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      setLoading(true);
+      await axios.delete(`http://localhost:5801/api/blogs/${id}`);
+      fetchBlogs();
+    } catch (error) {
+      console.error('Error deleting blog post:', error);
+      setError('Error deleting blog post');
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchPosts();
+    fetchBlogs();
   }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("heading", heading);
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("blogPostDate", blogPostDate); // Add date
-    formData.append("blogUrlLinks", blogUrlLinks);
-    formData.append("image", image);
-
-    try {
-      if (editingPost) {
-        // Update existing post
-        await axios.put(
-          `https://blog-backend-beta-one.vercel.app/posts/${editingPost.id}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        alert("Blog post successfully updated!");
-      } else {
-        // Create new post
-        await axios.post(
-          "https://blog-backend-beta-one.vercel.app/upload",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        alert("Blog post successfully uploaded!");
-      }
-
-      // Reset form and state
-      setHeading("");
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      setBlogUrlLinks("");
-      setBlogPostDate(""); // Reset date
-      setEditingPost(null);
-      fetchPosts();
-    } catch (error) {
-      console.error("Error uploading or updating blog post:", error);
-      alert("Error uploading or updating blog post. Please try again.");
-    }
-  };
-
-  const handleEdit = (post) => {
-    setHeading(post.heading);
-    setTitle(post.title);
-    setDescription(post.description);
-    setBlogUrlLinks(post.blogUrlLinks);
-    setBlogPostDate(post.blogPostDate);
-    setImage(null); // Set image separately if needed
-    setEditingPost(post); // Set post to be edited
-  };
-
-  const handleDelete = async (postId) => {
-    try {
-      await axios.delete(`https://blog-backend-beta-one.vercel.app/posts/${postId}`);
-      alert("Blog post deleted!");
-      fetchPosts();
-    } catch (error) {
-      console.error("Error deleting blog post:", error);
-      alert("Error deleting blog post. Please try again.");
-    }
-  };
 
   return (
     <div className="App">
@@ -104,87 +109,89 @@ function BlogTest() {
           <label className="text-start">Heading:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
+            name="heading"
+            value={formData.heading}
+            onChange={handleChange}
             type="text"
-            value={heading}
-            onChange={(e) => setHeading(e.target.value)}
           />
         </div>
         <div className="flex flex-col w-full">
           <label className="text-start">Title:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="flex flex-col w-full">
           <label className="text-start">Description:</label>
           <textarea
             className="p-2 rounded-lg border-2 border-green-500"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
           />
         </div>
         <div className="flex flex-col w-full">
           <label className="text-start">Blog URL Links:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
+            name="blogURL"
+            value={formData.blogURL}
+            onChange={handleChange}
             type="text"
-            value={blogUrlLinks}
-            onChange={(e) => setBlogUrlLinks(e.target.value)}
           />
         </div>
         <div className="flex flex-col w-full">
           <label className="text-start">Blog Post Date:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
             type="date"
-            value={blogPostDate}
-            onChange={(e) => setBlogPostDate(e.target.value)}
           />
         </div>
         <div className="flex flex-col w-full">
           <label className="text-start">Image:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
+            onChange={handleFileChange}
             type="file"
-            onChange={(e) => setImage(e.target.files[0])}
           />
         </div>
-        <button className="btn mt-6 bg-green-800" type="submit">
-          {editingPost ? "Update" : "Submit"}
+        <button className="btn mt-6 bg-green-800" type="submit" disabled={loading}>
+          {loading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
+      {error && <p className="text-red-500">{error}</p>}
       <h2 className="py-12">Existing Blog Posts</h2>
-      <ul>
-        {posts.map((post) => (
-          <div className="grid gap-3 grid-cols-5 px-36 py-6" key={post.id}>
-            <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
-              <img src={post.imageUrl} alt={post.title} />
-              <h3>Header : {post.heading}</h3>
-              <p>Title : {post.title}</p>
-              <p>Description : {post.description}</p>
-              <p>Post Link : {post.blogUrlLinks}</p>
-              <p>Date : {post.blogPostDate}</p> {/* Display date */}
-              <div className="flex justify-center gap-3">
-                <button
-                  className="btn bg-green-200"
-                  onClick={() => handleEdit(post)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn bg-red-200"
-                  onClick={() => handleDelete(post.id)}
-                >
-                  Delete
-                </button>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {blogs.map((blog) => (
+            <div className="grid gap-3 grid-cols-5 px-36 py-6" key={blog.id}>
+              <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
+                <img src={blog.image} alt="Blog Post" />
+                <h3>Header: {blog.heading}</h3>
+                <p>Title: {blog.title}</p>
+                <p>Description: {blog.description}</p>
+                <p>
+                  Post Link: <a href={blog.blogURL} target="_blank" rel="noopener noreferrer">Read more</a>
+                </p>
+                <p>Date: {new Date(blog.date).toLocaleDateString()}</p>
+                <div className="flex justify-center gap-3">
+                  <button className="btn bg-green-200" onClick={() => handleEdit(blog)}>Edit</button>
+                  <button className="btn bg-red-200" onClick={() => handleDelete(blog.id)}>Delete</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
