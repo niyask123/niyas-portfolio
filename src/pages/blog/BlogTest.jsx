@@ -35,9 +35,17 @@ function BlogTest() {
     try {
       setLoading(true);
       if (editing) {
-        await axios.put(`http://localhost:5801/api/blogs/${currentBlogId}`, formDataToSend);
+        await axios.put(`http://localhost:5801/api/blogs/${currentBlogId}`, formDataToSend, {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Set the content type
+          },
+        });
       } else {
-        await axios.post('http://localhost:5801/api/blogs', formDataToSend);
+        await axios.post('http://localhost:5801/api/blogs', formDataToSend, {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Set the content type
+          },
+        });
       }
       fetchBlogs();
       setFormData({
@@ -78,7 +86,7 @@ function BlogTest() {
       description: blog.description,
       blogURL: blog.blogURL,
       date: new Date(blog.date).toISOString().split('T')[0],
-      image: null,
+      image: null, // This should be null or reset
     });
     setEditing(true);
     setCurrentBlogId(blog.id);
