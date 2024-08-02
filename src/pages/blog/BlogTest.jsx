@@ -35,13 +35,13 @@ function BlogTest() {
     try {
       setLoading(true);
       if (editing) {
-        await axios.put(`http://localhost:5801/api/blogs/${currentBlogId}`, formDataToSend, {
+        await axios.put(`https://dbblog.vercel.app/api/blogs/${currentBlogId}`, formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data', // Set the content type
           },
         });
       } else {
-        await axios.post('http://localhost:5801/api/blogs', formDataToSend, {
+        await axios.post('https://dbblog.vercel.app/api/blogs', formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data', // Set the content type
           },
@@ -69,7 +69,7 @@ function BlogTest() {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5801/api/blogs');
+      const response = await axios.get('https://dbblog.vercel.app/api/blogs');
       setBlogs(response.data);
     } catch (error) {
       console.error('Error fetching blogs:', error);
@@ -94,7 +94,7 @@ function BlogTest() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5801/api/blogs/${id}`);
+      await axios.delete(`https://dbblog.vercel.app/api/blogs/${id}`);
       fetchBlogs();
     } catch (error) {
       console.error('Error deleting blog post:', error);
