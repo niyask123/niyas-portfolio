@@ -1,69 +1,64 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
 
 function BlogTest() {
-  const [heading, setHeading] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [heading, setHeading] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [blogUrlLinks, setBlogUrlLinks] = useState("");
-  const [blogPostDate, setBlogPostDate] = useState("");
-  const [posts, setPosts] = useState([]);
+  const [blogUrlLinks, setBlogUrlLinks] = useState('');
+  const [blogPostDate, setBlogPostDate] = useState('');
   const [editingPost, setEditingPost] = useState(null);
-
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get("https://blog-backend-beta-one.vercel.app/posts");
-      setPosts(response.data);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-    }
-  };
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('/api/posts');
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
     fetchPosts();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("heading", heading);
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("blogPostDate", blogPostDate);
-    formData.append("blogUrlLinks", blogUrlLinks);
-    if (image) {
-      formData.append("image", image);
-    }
+    formData.append('heading', heading);
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('blogUrlLinks', blogUrlLinks);
+    formData.append('blogPostDate', blogPostDate);
+    if (image) formData.append('image', image);
 
+    const endpoint = editingPost ? '/api/posts/update' : '/api/posts';
     try {
-      if (editingPost) {
-        await axios.put(
-          `https://blog-backend-beta-one.vercel.app/posts/${editingPost.id}`,
-          formData,
-          { headers: { "Content-Type": "multipart/form-data" } }
-        );
-        alert("Blog post successfully updated!");
-      } else {
-        await axios.post(
-          "https://blog-backend-beta-one.vercel.app/upload",
-          formData,
-          { headers: { "Content-Type": "multipart/form-data" } }
-        );
-        alert("Blog post successfully uploaded!");
+      const response = await fetch(endpoint, {
+        method: editingPost ? 'PUT' : 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
       }
 
-      setHeading("");
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      setBlogUrlLinks("");
-      setBlogPostDate("");
-      setEditingPost(null);
-      fetchPosts();
+      const result = await response.json();
+      if (editingPost) {
+        setPosts(prevPosts =>
+          prevPosts.map(post => (post.id === result.id ? result : post))
+        );
+      } else {
+        setPosts(prevPosts => [...prevPosts, result]);
+      }
+      resetForm();
     } catch (error) {
-      console.error("Error uploading or updating blog post:", error);
-      alert("Error uploading or updating blog post. Please try again.");
+      console.error('Error:', error);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -79,13 +74,25 @@ function BlogTest() {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`https://blog-backend-beta-one.vercel.app/posts/${postId}`);
-      alert("Blog post deleted!");
-      fetchPosts();
+      const response = await fetch(`/api/posts/${postId}`, { method: 'DELETE' });
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      setPosts(posts.filter(post => post.id !== postId));
     } catch (error) {
-      console.error("Error deleting blog post:", error);
-      alert("Error deleting blog post. Please try again.");
+      console.error('Failed to delete post:', error);
+      alert('Failed to delete post');
     }
+  };
+
+  const resetForm = () => {
+    setHeading('');
+    setTitle('');
+    setDescription('');
+    setBlogUrlLinks('');
+    setBlogPostDate('');
+    setImage(null);
+    setEditingPost(null);
   };
 
   return (
@@ -144,20 +151,21 @@ function BlogTest() {
           />
         </div>
         <button className="btn mt-6 bg-green-800" type="submit">
-          {editingPost ? "Update" : "Submit"}
+          {editingPost ? 'Update' : 'Submit'}
         </button>
       </form>
+
       <h2 className="py-12">Existing Blog Posts</h2>
       <ul>
         {posts.map((post) => (
           <div className="grid gap-3 grid-cols-5 px-36 py-6" key={post.id}>
             <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
               {post.imageUrl && <img src={post.imageUrl} alt={post.title} />}
-              <h3>Header : {post.heading}</h3>
-              <p>Title : {post.title}</p>
-              <p>Description : {post.description}</p>
-              <p>Post Link : {post.blogUrlLinks}</p>
-              <p>Date : {new Date(post.blogPostDate).toLocaleDateString()}</p>
+              <h3>Header: {post.heading}</h3>
+              <p>Title: {post.title}</p>
+              <p>Description: {post.description}</p>
+              <p>Post Link: {post.blogUrlLinks}</p>
+              <p>Date: {new Date(post.blogPostDate).toLocaleDateString()}</p>
               <div className="flex justify-center gap-3">
                 <button
                   className="btn bg-green-200"
