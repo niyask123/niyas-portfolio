@@ -13,7 +13,7 @@ function BlogTest() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('/api/posts');
+        const response = await fetch('http://localhost:5222/api/posts');
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
@@ -36,7 +36,7 @@ function BlogTest() {
     formData.append('blogPostDate', blogPostDate);
     if (image) formData.append('image', image);
 
-    const endpoint = editingPost ? '/api/posts/update' : '/api/posts';
+    const endpoint = editingPost ? 'http://localhost:5222/api/posts/update' : 'http://localhost:5222/api/posts';
     try {
       const response = await fetch(endpoint, {
         method: editingPost ? 'PUT' : 'POST',
@@ -74,7 +74,7 @@ function BlogTest() {
 
   const handleDelete = async (postId) => {
     try {
-      const response = await fetch(`/api/posts/${postId}`, { method: 'DELETE' });
+      const response = await fetch(`http://localhost:5222/api/posts/${postId}`, { method: 'DELETE' });
       if (!response.ok) {
         throw new Error('Network response was not ok.');
       }
@@ -155,35 +155,20 @@ function BlogTest() {
         </button>
       </form>
 
-      <h2 className="py-12">Existing Blog Posts</h2>
-      <ul>
-        {posts.map((post) => (
-          <div className="grid gap-3 grid-cols-5 px-36 py-6" key={post.id}>
-            <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
-              {post.imageUrl && <img src={post.imageUrl} alt={post.title} />}
-              <h3>Header: {post.heading}</h3>
-              <p>Title: {post.title}</p>
-              <p>Description: {post.description}</p>
-              <p>Post Link: {post.blogUrlLinks}</p>
-              <p>Date: {new Date(post.blogPostDate).toLocaleDateString()}</p>
-              <div className="flex justify-center gap-3">
-                <button
-                  className="btn bg-green-200"
-                  onClick={() => handleEdit(post)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn bg-red-200"
-                  onClick={() => handleDelete(post.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
+      <div className="posts mt-10">
+        {posts.map(post => (
+          <div key={post.id} className="border p-4 mb-4">
+            <h2>{post.heading}</h2>
+            <h3>{post.title}</h3>
+            <p>{post.description}</p>
+            <p>{post.blogUrlLinks}</p>
+            <p>{new Date(post.blogPostDate).toLocaleDateString()}</p>
+            {post.imageUrl && <img src={post.imageUrl} alt="Post" />}
+            <button onClick={() => handleEdit(post)} className="btn bg-blue-500">Edit</button>
+            <button onClick={() => handleDelete(post.id)} className="btn bg-red-500">Delete</button>
           </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
