@@ -117,7 +117,7 @@ function BlogTest() {
   return (
     <div className="App">
       <ToastContainer />
-      <form className="grid lg:grid-cols-2 gap-5 px-6 lg:px-36" onSubmit={handleSubmit}>
+      <form className="grid lg:grid-cols-2 gap-5 px-6 lg:px-36 py-12" onSubmit={handleSubmit}>
         <div className="flex flex-col w-full">
           <label className="text-start">Heading:</label>
           <input

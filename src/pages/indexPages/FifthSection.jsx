@@ -43,13 +43,13 @@ const FifthSection = () => {
                           alt="Project"
                         />
                       </div>
-                      <div className="carousel-item w-full">
+                      {/* <div className="carousel-item w-full">
                         <img
                           src={ImageUploader}
                           className="w-full"
                           alt="Project"
                         />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e]  p-6 w-full ">
@@ -114,13 +114,13 @@ const FifthSection = () => {
                           alt="Project"
                         />
                       </div>
-                      <div className="carousel-item w-full">
+                      {/* <div className="carousel-item w-full">
                         <img
                           src={ImageUploader}
                           className="w-full"
                           alt="Project"
                         />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
