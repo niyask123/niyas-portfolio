@@ -30,23 +30,23 @@ function BlogTest() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSend = new FormData();
-    for (const key in formData) {
+    Object.keys(formData).forEach(key => {
       formDataToSend.append(key, formData[key]);
-    }
+    });
 
     try {
       setLoading(true);
       if (editing) {
         await axios.put(`https://dbblog.vercel.app/api/blogs/${currentBlogId}`, formDataToSend, {
           headers: {
-            'Content-Type': 'multipart/form-data', // Set the content type
+            'Content-Type': 'multipart/form-data',
           },
         });
         toast.success('Blog post updated successfully!');
       } else {
         await axios.post('https://dbblog.vercel.app/api/blogs', formDataToSend, {
           headers: {
-            'Content-Type': 'multipart/form-data', // Set the content type
+            'Content-Type': 'multipart/form-data',
           },
         });
         toast.success('Blog post created successfully!');
@@ -92,7 +92,7 @@ function BlogTest() {
       description: blog.description,
       blogURL: blog.blogURL,
       date: new Date(blog.date).toISOString().split('T')[0],
-      image: null, // This should be null or reset
+      image: null,
     });
     setEditing(true);
     setCurrentBlogId(blog.id);
@@ -126,6 +126,7 @@ function BlogTest() {
             value={formData.heading}
             onChange={handleChange}
             type="text"
+            required
           />
         </div>
         <div className="flex flex-col w-full">
@@ -136,6 +137,7 @@ function BlogTest() {
             value={formData.title}
             onChange={handleChange}
             type="text"
+            required
           />
         </div>
         <div className="flex flex-col w-full">
@@ -145,6 +147,7 @@ function BlogTest() {
             name="description"
             value={formData.description}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="flex flex-col w-full">
@@ -155,6 +158,7 @@ function BlogTest() {
             value={formData.blogURL}
             onChange={handleChange}
             type="text"
+            required
           />
         </div>
         <div className="flex flex-col w-full">
@@ -165,6 +169,7 @@ function BlogTest() {
             value={formData.date}
             onChange={handleChange}
             type="date"
+            required
           />
         </div>
         <div className="flex flex-col w-full">
@@ -184,24 +189,22 @@ function BlogTest() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className='grid gap-4 px-12 py-12 lg:grid-cols-5'>
+        <div className="grid gap-4 px-12 py-12 lg:grid-cols-5">
           {blogs.map((blog) => (
-           
-              <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg"  key={blog.id}>
-                <img src={blog.image} alt="Blog Post" />
-                <h3>Header: {blog.heading}</h3>
-                <p>Title: {blog.title}</p>
-                <p>Description: {blog.description}</p>
-                <p>
-                  Post Link: <a href={blog.blogURL} target="_blank" rel="noopener noreferrer">Read more</a>
-                </p>
-                <p>Date: {new Date(blog.date).toLocaleDateString()}</p>
-                <div className="flex justify-center gap-3">
-                  <button className="btn bg-green-200" onClick={() => handleEdit(blog)}>Edit</button>
-                  <button className="btn bg-red-200" onClick={() => handleDelete(blog.id)}>Delete</button>
-                </div>
+            <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg" key={blog.id}>
+              <img src={blog.image} alt="Blog Post" />
+              <h3>Header: {blog.heading}</h3>
+              <p>Title: {blog.title}</p>
+              <p>Description: {blog.description}</p>
+              <p>
+                Post Link: <a href={blog.blogURL} target="_blank" rel="noopener noreferrer">Read more</a>
+              </p>
+              <p>Date: {new Date(blog.date).toLocaleDateString()}</p>
+              <div className="flex justify-center gap-3">
+                <button className="btn bg-green-200" onClick={() => handleEdit(blog)}>Edit</button>
+                <button className="btn bg-red-200" onClick={() => handleDelete(blog.id)}>Delete</button>
               </div>
-            
+            </div>
           ))}
         </div>
       )}

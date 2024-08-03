@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ImageUploader from "../../components/ImageUpload";
 
 const FifthSection = () => {
   const [projects, setProjects] = useState([]);
@@ -9,9 +8,9 @@ const FifthSection = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get(
-          "https://crud-test-delta.vercel.app/projects"
+          "http://localhost:5801/api/projects"
         );
-        setProjects(response.data.projects);
+        setProjects(response.data);
       } catch (error) {
         console.error("There was an error fetching the projects!", error);
       }
@@ -21,7 +20,6 @@ const FifthSection = () => {
   }, []);
 
   return (
-    <>
     <div className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between ">
       <div className="text-center flex-col gap-3 items-center flex justify-center">
         <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg ">Work</p>
@@ -43,13 +41,6 @@ const FifthSection = () => {
                           alt="Project"
                         />
                       </div>
-                      {/* <div className="carousel-item w-full">
-                        <img
-                          src={ImageUploader}
-                          className="w-full"
-                          alt="Project"
-                        />
-                      </div> */}
                     </div>
                   </div>
                   <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e]  p-6 w-full ">
@@ -114,13 +105,6 @@ const FifthSection = () => {
                           alt="Project"
                         />
                       </div>
-                      {/* <div className="carousel-item w-full">
-                        <img
-                          src={ImageUploader}
-                          className="w-full"
-                          alt="Project"
-                        />
-                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -130,9 +114,6 @@ const FifthSection = () => {
         </div>
       </div>
     </div>
-    <hr className="border-[#1d232a] mx-6" />
-    </>
-
   );
 };
 

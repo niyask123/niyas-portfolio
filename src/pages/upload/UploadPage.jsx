@@ -22,9 +22,9 @@ const UploadPage = () => {
   const fetchProjects = async () => {
     try {
       const response = await axios.get(
-        "https://crud-test-delta.vercel.app/projects"
+        "http://localhost:5801/api/projects"
       );
-      setProjects(response.data.projects);
+      setProjects(response.data);
     } catch (error) {
       console.error("There was an error fetching the projects!", error);
     }
@@ -54,7 +54,7 @@ const UploadPage = () => {
     try {
       if (editingProject) {
         await axios.put(
-          `https://crud-test-delta.vercel.app/upload/${editingProject.id}`,
+          `http://localhost:5801/api/projects/${editingProject.id}`,
           data,
           {
             headers: {
@@ -64,7 +64,7 @@ const UploadPage = () => {
         );
         toast.success("Project updated successfully!");
       } else {
-        await axios.post("https://crud-test-delta.vercel.app/upload", data, {
+        await axios.post("http://localhost:5801/api/projects", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -99,7 +99,7 @@ const UploadPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://crud-test-delta.vercel.app/delete/${id}`);
+      await axios.delete(`http://localhost:5801/api/projects/${id}`);
       toast.success("Project deleted successfully!");
       fetchProjects();
     } catch (error) {
@@ -109,104 +109,109 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="lg:px-20 px-3 py-12 text-left bg-gray-100">
-      <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
-      <h2 className="text-2xl text-center text-black mb-4">
-        {editingProject ? "Edit Project" : "Upload New Project"}
-      </h2>
-      <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-3 lg:px-36">
+    <div className="lg:px-20 px-3 py-12 text-left">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">Manage Projects</h2>
+        <button
+          onClick={() => {
+            setFormData({
+              heading: "",
+              caption: "",
+              languages: "",
+              url: "",
+            });
+            setFile(null);
+            setEditingProject(null);
+          }}
+          className="btn btn-primary"
+        >
+          Add New Project
+        </button>
+      </div>
+      <form onSubmit={handleSubmit} className="mb-4">
         <input
-          className="bg-black pt-1 px-2 rounded-lg"
-          type="file"
-          name="image"
-          onChange={handleFileChange}
-          required={editingProject === null}
-        />
-        <input
-          className="p-2 rounded-lg"
           type="text"
           name="heading"
-          placeholder="Heading"
-          onChange={handleChange}
           value={formData.heading}
+          onChange={handleChange}
+          placeholder="Project Heading"
+          className="input input-bordered w-full mb-2"
           required
         />
         <input
-          className="p-2 rounded-lg"
           type="text"
           name="caption"
-          placeholder="Caption"
-          onChange={handleChange}
           value={formData.caption}
+          onChange={handleChange}
+          placeholder="Project Caption"
+          className="input input-bordered w-full mb-2"
           required
         />
         <input
-          className="p-2 rounded-lg"
           type="text"
           name="languages"
-          placeholder="Languages (comma separated)"
-          onChange={handleChange}
           value={formData.languages}
+          onChange={handleChange}
+          placeholder="Project Languages"
+          className="input input-bordered w-full mb-2"
           required
         />
         <input
-          className="p-2 rounded-lg"
-          type="url"
+          type="text"
           name="url"
-          placeholder="Project URL"
-          onChange={handleChange}
           value={formData.url}
+          onChange={handleChange}
+          placeholder="Project URL"
+          className="input input-bordered w-full mb-2"
           required
         />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          {editingProject ? "Update" : "Upload"}
+        <input
+          type="file"
+          onChange={handleFileChange}
+          className="mb-2"
+        />
+        <button type="submit" className="btn btn-primary">
+          {editingProject ? "Update Project" : "Upload Project"}
         </button>
       </form>
-
-      <div className="mt-8 overflow-hidden">
-        <h3 className="text-xl mb-4 text-center text-black">Uploaded Projects List</h3>
-        <div className="grid lg:grid-cols-3 gap-2">
-          {projects.map((project) => (
-            <div key={project.id} className="mb-4 flex flex-col gap-3 text-center items-center border-2 p-4 rounded">
-              {project.image && (
-                <img
-                  src={project.image}
-                  alt="Project"
-                  className="w-32 h-32 object-cover mb-2"
-                />
-              )}
-              <h4 className="text-lg font-semibold">Name: {project.heading}</h4>
-              <p>Captions: {project.caption}</p>
-              <p>
-                <strong>Languages:</strong> {project.languages}
-              </p>
-              <p>
-                <strong>URL:</strong>{" "}
-                <a href={project.url} target="_blank" className="text-xs" rel="noopener noreferrer">
-                  {project.url}
-                </a>
-              </p>
-              <div className="flex">
-                <button
-                  onClick={() => handleEdit(project)}
-                  className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(project.id)}
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="overflow-x-auto">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>Heading</th>
+              <th>Caption</th>
+              <th>Languages</th>
+              <th>URL</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects.map((project) => (
+              <tr key={project.id}>
+                <td>{project.heading}</td>
+                <td>{project.caption}</td>
+                <td>{project.languages}</td>
+                <td>{project.url}</td>
+                <td>
+                  <button
+                    onClick={() => handleEdit(project)}
+                    className="btn btn-info btn-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(project.id)}
+                    className="btn btn-error btn-sm ml-2"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      <ToastContainer />
     </div>
   );
 };
