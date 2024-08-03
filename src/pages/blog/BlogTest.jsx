@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BlogTest() {
   const [blogs, setBlogs] = useState([]);
@@ -40,12 +42,14 @@ function BlogTest() {
             'Content-Type': 'multipart/form-data', // Set the content type
           },
         });
+        toast.success('Blog post updated successfully!');
       } else {
         await axios.post('https://dbblog.vercel.app/api/blogs', formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data', // Set the content type
           },
         });
+        toast.success('Blog post created successfully!');
       }
       fetchBlogs();
       setFormData({
@@ -61,6 +65,7 @@ function BlogTest() {
     } catch (error) {
       console.error('Error submitting blog post:', error);
       setError('Error submitting blog post');
+      toast.error('Error submitting blog post');
     } finally {
       setLoading(false);
     }
@@ -74,6 +79,7 @@ function BlogTest() {
     } catch (error) {
       console.error('Error fetching blogs:', error);
       setError('Error fetching blogs');
+      toast.error('Error fetching blogs');
     } finally {
       setLoading(false);
     }
@@ -96,9 +102,11 @@ function BlogTest() {
     try {
       await axios.delete(`https://dbblog.vercel.app/api/blogs/${id}`);
       fetchBlogs();
+      toast.success('Blog post deleted successfully!');
     } catch (error) {
       console.error('Error deleting blog post:', error);
       setError('Error deleting blog post');
+      toast.error('Error deleting blog post');
     }
   };
 
@@ -108,7 +116,8 @@ function BlogTest() {
 
   return (
     <div className="App">
-      <form className="grid grid-cols-2 gap-5 px-36" onSubmit={handleSubmit}>
+      <ToastContainer />
+      <form className="grid lg:grid-cols-2 gap-5 px-6 lg:px-36" onSubmit={handleSubmit}>
         <div className="flex flex-col w-full">
           <label className="text-start">Heading:</label>
           <input
@@ -175,10 +184,10 @@ function BlogTest() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul>
+        <div className='grid gap-4 px-12 py-12 lg:grid-cols-5'>
           {blogs.map((blog) => (
-            <div className="grid gap-3 grid-cols-5 px-36 py-6" key={blog.id}>
-              <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg">
+           
+              <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg"  key={blog.id}>
                 <img src={blog.image} alt="Blog Post" />
                 <h3>Header: {blog.heading}</h3>
                 <p>Title: {blog.title}</p>
@@ -192,9 +201,9 @@ function BlogTest() {
                   <button className="btn bg-red-200" onClick={() => handleDelete(blog.id)}>Delete</button>
                 </div>
               </div>
-            </div>
+            
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
