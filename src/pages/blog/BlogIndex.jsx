@@ -40,7 +40,7 @@ const BlogIndex = () => {
           <div className="carousel carousel-end flex p-2">
             {blogs.map((blog) => (
               <div className="carousel-item" key={blog.id}>
-                <div className="flex flex-col border-2 rounded-2xl mx-2 p-4">
+                <div className="flex flex-col border-2 rounded-2xl mx-2 p-4  lg:w-72">
                   <div className="flex py-3 flex-gap-3 justify-between">
                     <h3 className="text-xl font-bold ">{blog.heading}</h3>
                     <p>{new Date(blog.date).toLocaleDateString()}</p>

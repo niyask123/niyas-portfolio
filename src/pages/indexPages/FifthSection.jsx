@@ -34,7 +34,7 @@ const FifthSection = () => {
             <div key={index} className="flex flex-col gap-5 text-white">
               {index % 2 === 0 ? (
                 <div className="flex lg:flex-row flex-col">
-                  <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-2 lg:p-6 w-full">
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75]  p-2 lg:p-6 w-full">
                     <div className="carousel rounded-box ">
                       <div className="carousel-item w-full">
                         <img
@@ -52,7 +52,7 @@ const FifthSection = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full rounded-lg rounded-ss-none rounded-es-none">
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e]  p-6 w-full ">
                     <div className="flex justify-between w-full">
                       <p className="text-2xl ">{project.heading}</p>
                       <p className="w-3 bg-green-600 rounded-full h-3"></p>
@@ -80,7 +80,7 @@ const FifthSection = () => {
                 </div>
               ) : (
                 <div className="flex lg:flex-row flex-col">
-                  <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full rounded-lg rounded-ss-none rounded-es-none">
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full ">
                     <div className="flex justify-between w-full">
                       <p className="text-2xl ">{project.heading}</p>
                       <p className="w-3 bg-green-600 rounded-full h-3"></p>
@@ -105,7 +105,7 @@ const FifthSection = () => {
                       />
                     </a>
                   </div>
-                  <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] rounded-lg rounded-ee-none rounded-tr-none p-2 lg:p-6 w-full">
+                  <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75]  p-2 lg:p-6 w-full">
                     <div className="carousel rounded-box ">
                       <div className="carousel-item w-full">
                         <img
