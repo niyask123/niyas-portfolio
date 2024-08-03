@@ -1,66 +1,81 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const BlogIndex = () => {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("https://dbblog.vercel.app/api/blogs");
+      setBlogs(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+      setError("Error fetching blogs");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
   return (
     <div>
-      <div className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between ">
-        <div className="border-2 border-white rounded-box">
-        <div className="carousel carousel-end rounded-box border-[#1d232a]  border-2">
-          <div className="carousel-item">
-            <div className="carousel-item border-e-2 border-blue-800">
-              <div className="flex flex-col gap-1 p-2">
-                <div className="flex gap-5 justify-end w-full">
-                  <p>10-12-2024</p>
-                </div>
-                <h3>lajsdfljd</h3>
-                <p>Caption</p>
-                <img src="/image/items/firstbg.png" alt="" />
-                <p className="text-xs">Description</p>
-                <Link href="" className="text-end">Link</Link>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
-              alt="Drink"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
-              alt="Drink"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
-              alt="Drink"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
-              alt="Drink"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
-              alt="Drink"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
-              alt="Drink"
-            />
-          </div>
-        </div>
-        </div>
+      <div className="text-center flex-col gap-3 py-8 items-center flex justify-center">
+        <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg ">
+          Our Blogs
+        </p>
+        <p>Personal Blogs and notes:</p>
       </div>
+      {error && <p className="text-red-500">{error}</p>}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="lg:px-20 px-3 py-12">
+          <div className="carousel carousel-end flex p-2">
+            {blogs.map((blog) => (
+              <div className="carousel-item" key={blog.id}>
+                <div className="flex flex-col border-2 rounded-2xl mx-2 p-4">
+                  <div className="flex py-3 flex-gap-3 justify-between">
+                    <h3 className="text-xl font-bold ">{blog.heading}</h3>
+                    <p>{new Date(blog.date).toLocaleDateString()}</p>
+                  </div>
+                  <img
+                    src={blog.image}
+                    alt={blog.heading}
+                    className="w-full object-cover h-64 rounded-lg"
+                  />
+                  <div className="mt-4 flex flex-col gap-3">
+                    <p className="text-lg font-semibold text-start">
+                      {blog.title}
+                    </p>
+                    <p className="text-sm text-start">{blog.description}</p>
+
+                    <p className="text-end">
+                      <Link
+                        to={blog.blogURL}
+                        className="text-blue-500 text-end"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Read more
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    <hr className="border-[#1d232a] mx-6" />
     </div>
+    
   );
 };
 

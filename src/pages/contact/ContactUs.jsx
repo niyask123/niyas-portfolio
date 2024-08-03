@@ -3,7 +3,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     <>
-      <div className="flex lg:px-20 px-6 flex-row gap-12 py-12 text-left justify-between bg-black">
+      <div className="flex lg:px-20 px-6 flex-row gap-12 py-12 text-left justify-between ">
         {/* <div className="flex-[.70] flex-col"> */}
         <div className="flex flex-col gap-4">
           <h1 className=" text-2xl lg:text-5xl">Hi, I’m Niyas K 👋</h1>
