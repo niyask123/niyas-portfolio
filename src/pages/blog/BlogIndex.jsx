@@ -11,7 +11,8 @@ const BlogIndex = () => {
     try {
       setLoading(true);
       const response = await axios.get("https://dbblog.vercel.app/api/blogs");
-      setBlogs(response.data);
+      const sortedBlogs = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setBlogs(sortedBlogs);
     } catch (error) {
       console.error("Error fetching blogs:", error);
       setError("Error fetching blogs");
@@ -40,7 +41,7 @@ const BlogIndex = () => {
           <div className="carousel carousel-end flex p-2">
             {blogs.map((blog) => (
               <div className="carousel-item" key={blog.id}>
-                <div className="flex flex-col border-2 rounded-2xl mx-2 p-4  lg:w-72">
+                <div className="flex flex-col border-2 rounded-2xl mx-2 p-4 lg:w-72 lg:h-full">
                   <div className="flex py-3 flex-gap-3 justify-between">
                     <h3 className="text-xl font-bold ">{blog.heading}</h3>
                     <p>{new Date(blog.date).toLocaleDateString()}</p>
@@ -48,7 +49,7 @@ const BlogIndex = () => {
                   <img
                     src={blog.image}
                     alt={blog.heading}
-                    className="w-full object-cover h-64 rounded-lg"
+                    className="w-full object-cover h-80 rounded-lg"
                   />
                   <div className="mt-4 flex flex-col gap-3">
                     <p className="text-lg font-semibold text-start">
@@ -73,9 +74,8 @@ const BlogIndex = () => {
           </div>
         </div>
       )}
-    <hr className="border-[#1d232a] mx-6" />
+      <hr className="border-[#1d232a] mx-6" />
     </div>
-    
   );
 };
 
