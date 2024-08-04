@@ -22,7 +22,7 @@ const UploadPage = () => {
   const fetchProjects = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5801/api/projects"
+        ""
       );
       setProjects(response.data);
     } catch (error) {
@@ -54,7 +54,7 @@ const UploadPage = () => {
     try {
       if (editingProject) {
         await axios.put(
-          `http://localhost:5801/api/projects/${editingProject.id}`,
+          `/${editingProject.id}`,
           data,
           {
             headers: {
@@ -64,7 +64,7 @@ const UploadPage = () => {
         );
         toast.success("Project updated successfully!");
       } else {
-        await axios.post("http://localhost:5801/api/projects", data, {
+        await axios.post("", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -99,7 +99,7 @@ const UploadPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5801/api/projects/${id}`);
+      await axios.delete(`/${id}`);
       toast.success("Project deleted successfully!");
       fetchProjects();
     } catch (error) {
