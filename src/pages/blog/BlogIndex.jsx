@@ -10,7 +10,7 @@ const BlogIndex = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("https://dbblog.vercel.app/api/blogs");
+      const response = await axios.get("http://localhost:5999/api/blogs");
       const sortedBlogs = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
       setBlogs(sortedBlogs);
     } catch (error) {
@@ -28,7 +28,7 @@ const BlogIndex = () => {
   return (
     <div>
       <div className="text-center flex-col gap-3 py-8 items-center flex justify-center">
-        <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg ">
+        <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg">
           Our Blogs
         </p>
         <p>Personal Blogs and notes:</p>
@@ -43,24 +43,30 @@ const BlogIndex = () => {
               <div className="carousel-item" key={blog.id}>
                 <div className="flex flex-col border-2 rounded-2xl mx-2 p-4 lg:w-72 lg:h-full">
                   <div className="flex py-3 flex-gap-3 justify-between">
-                    <h3 className="text-xl font-bold ">{blog.heading}</h3>
+                    <h3 className="text-xl font-bold">{blog.heading}</h3>
                     <p>{new Date(blog.date).toLocaleDateString()}</p>
                   </div>
-                  <img
-                    src={blog.image}
-                    alt={blog.heading}
-                    className="w-full object-cover h-80 rounded-lg"
-                  />
+                  {blog.blogImages && blog.blogImages.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {blog.blogImages.map((img, index) => (
+                        <img
+                          key={index}
+                          src={img}
+                          alt={`Blog Post ${index}`}
+                          className="w-full h-32 object-cover rounded-lg"
+                        />
+                      ))}
+                    </div>
+                  )}
                   <div className="mt-4 flex flex-col gap-3">
                     <p className="text-lg font-semibold text-start">
                       {blog.title}
                     </p>
                     <p className="text-sm text-start">{blog.description}</p>
-
                     <p className="text-end">
                       <Link
                         to={blog.blogURL}
-                        className="text-blue-500 text-end"
+                        className="text-blue-500"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

@@ -11,7 +11,7 @@ function BlogTest() {
     description: '',
     blogURL: '',
     date: '',
-    image: null,
+    blogImages: null,
   });
   const [editing, setEditing] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
@@ -24,27 +24,33 @@ function BlogTest() {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
+    setFormData({ ...formData, blogImages: e.target.files });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSend = new FormData();
     Object.keys(formData).forEach(key => {
-      formDataToSend.append(key, formData[key]);
+      if (key === 'blogImages') {
+        for (let i = 0; i < formData.blogImages.length; i++) {
+          formDataToSend.append('blogImages', formData.blogImages[i]);
+        }
+      } else {
+        formDataToSend.append(key, formData[key]);
+      }
     });
 
     try {
       setLoading(true);
       if (editing) {
-        await axios.put(`https://dbblog.vercel.app/api/blogs/${currentBlogId}`, formDataToSend, {
+        await axios.put(`http://localhost:5999/api/blogs/${currentBlogId}`, formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
         toast.success('Blog post updated successfully!');
       } else {
-        await axios.post('https://dbblog.vercel.app/api/blogs', formDataToSend, {
+        await axios.post('http://localhost:5999/api/blogs', formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -58,7 +64,7 @@ function BlogTest() {
         description: '',
         blogURL: '',
         date: '',
-        image: null,
+        blogImages: null,
       });
       setEditing(false);
       setCurrentBlogId(null);
@@ -74,7 +80,7 @@ function BlogTest() {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://dbblog.vercel.app/api/blogs');
+      const response = await axios.get('http://localhost:5999/api/blogs');
       setBlogs(response.data);
     } catch (error) {
       console.error('Error fetching blogs:', error);
@@ -92,7 +98,7 @@ function BlogTest() {
       description: blog.description,
       blogURL: blog.blogURL,
       date: new Date(blog.date).toISOString().split('T')[0],
-      image: null,
+      blogImages: null,
     });
     setEditing(true);
     setCurrentBlogId(blog.id);
@@ -100,7 +106,7 @@ function BlogTest() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://dbblog.vercel.app/api/blogs/${id}`);
+      await axios.delete(`http://localhost:5999/api/blogs/${id}`);
       fetchBlogs();
       toast.success('Blog post deleted successfully!');
     } catch (error) {
@@ -173,11 +179,12 @@ function BlogTest() {
           />
         </div>
         <div className="flex flex-col w-full">
-          <label className="text-start">Image:</label>
+          <label className="text-start">Images:</label>
           <input
             className="p-2 rounded-lg border-2 border-green-500"
             onChange={handleFileChange}
             type="file"
+            multiple
           />
         </div>
         <button className="btn mt-6 bg-green-800" type="submit" disabled={loading}>
@@ -192,7 +199,9 @@ function BlogTest() {
         <div className="grid gap-4 px-12 py-12 lg:grid-cols-5">
           {blogs.map((blog) => (
             <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg" key={blog.id}>
-              <img src={blog.image} alt="Blog Post" />
+              {blog.blogImages && blog.blogImages.map((img, index) => (
+                <img key={index} src={img} alt="Blog Post" />
+              ))}
               <h3>Header: {blog.heading}</h3>
               <p>Title: {blog.title}</p>
               <p>Description: {blog.description}</p>
