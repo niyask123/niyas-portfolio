@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const UploadPage = () => {
-  const [file, setFile] = useState(null);
-  const [formData, setFormData] = useState({
-    heading: "",
-    caption: "",
-    languages: "",
-    url: "",
-  });
-
+function UploadPage() {
   const [projects, setProjects] = useState([]);
-  const [editingProject, setEditingProject] = useState(null);
+  const [form, setForm] = useState({
+    title: "",
+    company: "",
+    date: "",
+    projectUrl: "",
+    usedLanguages: "",
+    projectImages: [],
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentProjectId, setCurrentProjectId] = useState(null);
 
   useEffect(() => {
     fetchProjects();
@@ -21,199 +20,229 @@ const UploadPage = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get(
-        ""
-      );
+      const response = await axios.get("http://localhost:5999/api/projects");
       setProjects(response.data);
     } catch (error) {
-      console.error("There was an error fetching the projects!", error);
+      console.error("Error fetching projects:", error);
     }
   };
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setForm((prevForm) => ({
+      ...prevForm,
       [name]: value,
-    });
+    }));
   };
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleImageChange = (e) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      projectImages: e.target.files,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("image", file);
-    data.append("heading", formData.heading);
-    data.append("caption", formData.caption);
-    data.append("languages", formData.languages);
-    data.append("url", formData.url);
+    const formData = new FormData();
+
+    Object.keys(form).forEach((key) => {
+      if (key === "projectImages") {
+        for (let i = 0; i < form[key].length; i++) {
+          formData.append("images", form[key][i]);
+        }
+      } else {
+        formData.append(key, form[key]);
+      }
+    });
 
     try {
-      if (editingProject) {
-        await axios.put(
-          `/${editingProject.id}`,
-          data,
+      if (isEditing) {
+        await axios.patch(
+          `http://localhost:5999/api/projects/${currentProjectId}`,
+          formData,
           {
             headers: {
               "Content-Type": "multipart/form-data",
             },
           }
         );
-        toast.success("Project updated successfully!");
+        setIsEditing(false);
+        setCurrentProjectId(null);
       } else {
-        await axios.post("", data, {
+        await axios.post("http://localhost:5999/api/projects", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        toast.success("Project uploaded successfully!");
       }
-      setFormData({
-        heading: "",
-        caption: "",
-        languages: "",
-        url: "",
-      });
-      setFile(null);
-      setEditingProject(null);
+      resetForm();
       fetchProjects();
     } catch (error) {
-      console.error("There was an error saving the data!", error);
-      toast.error("There was an error saving the data!");
+      console.error("Error submitting form:", error);
     }
   };
 
   const handleEdit = (project) => {
-    setFormData({
-      heading: project.heading,
-      caption: project.caption,
-      languages: project.languages,
-      url: project.url,
+    setForm({
+      title: project.title,
+      company: project.company,
+      date: project.date.split("T")[0],
+      projectUrl: project.projectUrl,
+      usedLanguages: project.usedLanguages || "", // Handle as string
+      projectImages: [],
     });
-    setFile(null); // Clear file when editing
-    setEditingProject(project);
+    setIsEditing(true);
+    setCurrentProjectId(project.id);
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${id}`);
-      toast.success("Project deleted successfully!");
+      await axios.delete(`http://localhost:5999/api/projects/${id}`);
       fetchProjects();
     } catch (error) {
-      console.error("There was an error deleting the project!", error);
-      toast.error("There was an error deleting the project!");
+      console.error("Error deleting project:", error);
     }
   };
 
+  const resetForm = () => {
+    setForm({
+      title: "",
+      company: "",
+      date: "",
+      projectUrl: "",
+      usedLanguages: "",
+      projectImages: [],
+    });
+  };
+
   return (
-    <div className="lg:px-20 px-3 py-12 text-left">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">Manage Projects</h2>
-        <button
-          onClick={() => {
-            setFormData({
-              heading: "",
-              caption: "",
-              languages: "",
-              url: "",
-            });
-            setFile(null);
-            setEditingProject(null);
-          }}
-          className="btn btn-primary"
-        >
-          Add New Project
-        </button>
-      </div>
-      <form onSubmit={handleSubmit} className="mb-4">
-        <input
-          type="text"
-          name="heading"
-          value={formData.heading}
-          onChange={handleChange}
-          placeholder="Project Heading"
-          className="input input-bordered w-full mb-2"
-          required
-        />
-        <input
-          type="text"
-          name="caption"
-          value={formData.caption}
-          onChange={handleChange}
-          placeholder="Project Caption"
-          className="input input-bordered w-full mb-2"
-          required
-        />
-        <input
-          type="text"
-          name="languages"
-          value={formData.languages}
-          onChange={handleChange}
-          placeholder="Project Languages"
-          className="input input-bordered w-full mb-2"
-          required
-        />
-        <input
-          type="text"
-          name="url"
-          value={formData.url}
-          onChange={handleChange}
-          placeholder="Project URL"
-          className="input input-bordered w-full mb-2"
-          required
-        />
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="mb-2"
-        />
-        <button type="submit" className="btn btn-primary">
-          {editingProject ? "Update Project" : "Upload Project"}
-        </button>
+    <div className="App">
+      <h1 className="py-6 px-20">Project Management</h1>
+      <form
+        className="grid lg:grid-cols-2 gap-5 px-6 lg:px-36"
+        onSubmit={handleSubmit}
+      >
+        <div className="flex flex-col text-start">
+          <label>Title:</label>
+          <input
+            className="p-2 mt-1 rounded-lg border-2"
+            type="text"
+            name="title"
+            value={form.title}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col text-start">
+          <label>Company:</label>
+          <input
+            className="p-2 mt-1 rounded-lg border-2"
+            type="text"
+            name="company"
+            value={form.company}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col text-start">
+          <label>Date:</label>
+          <input
+            className="p-2 mt-1 rounded-lg border-2"
+            type="date"
+            name="date"
+            value={form.date}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col text-start">
+          <label>Project URL:</label>
+          <input
+            className="p-2 mt-1 rounded-lg border-2"
+            type="url"
+            name="projectUrl"
+            value={form.projectUrl}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col text-start">
+          <label>Used Languages:</label>
+          <input
+            className="p-2 mt-1 rounded-lg border-2"
+            type="text"
+            name="usedLanguages"
+            value={form.usedLanguages}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col text-start">
+          <label>Project Images:</label>
+          <input
+            type="file"
+            className="p-2 mt-1 rounded-lg border-2"
+            multiple
+            onChange={handleImageChange}
+          />
+        </div>
+        <button className="text-red-600 btn hover:text-red-900" type="submit">{isEditing ? "Update" : "Create"} Project</button>
       </form>
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>Heading</th>
-              <th>Caption</th>
-              <th>Languages</th>
-              <th>URL</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map((project) => (
-              <tr key={project.id}>
-                <td>{project.heading}</td>
-                <td>{project.caption}</td>
-                <td>{project.languages}</td>
-                <td>{project.url}</td>
-                <td>
-                  <button
-                    onClick={() => handleEdit(project)}
-                    className="btn btn-info btn-sm"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(project.id)}
-                    className="btn btn-error btn-sm ml-2"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <h2 className="py-6">Project List</h2>
+      <div className="grid lg:grid-cols-5 gap-5 px-6 lg:px-36 lg:py-12">
+        {projects.map((project) => (
+          <React.Fragment key={project.id}>
+            <div className="flex flex-col gap-3 border-2 rounded-lg p-3">
+              <div className="text-sm font-medium ">Title: {project.title}</div>
+              <div className="text-sm">Company: {project.company}</div>
+              <div className="text-sm">Date: {project.date}</div>
+              <div className="text-sm">
+                Project Url
+                <a
+                  href={project.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  {project.projectUrl}
+                </a>
+              </div>
+              <div className="text-sm">
+                Used Languages: {project.usedLanguages || "N/A"}
+              </div>
+              <div className="flex  overflow-auto lg:max-w-48">
+                {project.projectImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Project Image ${index}`}
+                    className="w-24 h-auto object-cover mr-2 mb-2"
+                  />
+                ))}
+              </div>
+              <div className="flex space-x-2 justify-center text-sm font-medium">
+                <button
+                  onClick={() => handleEdit(project)}
+                  className="text-indigo-600 btn hover:text-indigo-900"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(project.id)}
+                  className="text-red-600 btn hover:text-red-900"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </React.Fragment>
+        ))}
       </div>
-      <ToastContainer />
     </div>
   );
-};
+}
 
 export default UploadPage;
+
+

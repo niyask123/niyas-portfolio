@@ -11,6 +11,7 @@ import ContactUs from "../pages/contact/ContactUs";
 import Projects from "../pages/projects/Projects";
 import BlogTest from "../pages/blog/BlogTest";
 import LoginIndex from "../pages/loginDashboard/LoginIndex";
+import PersonalProjects from "../pages/projects/PersonalProjects";
 
 const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
           <Route path="/projects" element={<Projects/>}/>
           <Route path="/test" element={<BlogTest/>}/>
           <Route path="/login-index" element={<LoginIndex/>}/>
+          <Route path="/projectsnew" element={<PersonalProjects/>}/>
           
         </Route>
       </Routes>
