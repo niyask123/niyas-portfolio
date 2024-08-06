@@ -1,32 +1,45 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      await axios.post('http://localhost:5999/api/send-email', formData);
-      alert('Email sent successfully');
+      const response = await axios.post(
+        "http://localhost:5999/api/contact/send",
+        formData
+      );
+      if (response.status === 200) {
+        toast.success("Email sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+      }
     } catch (error) {
-      alert('Failed to send email');
+      toast.error("Error sending email. Please try again.");
     }
   };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="font-[sans-serif]">
@@ -36,82 +49,125 @@ const ContactUs = () => {
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="mb-8">
                 <h3 className="text-3xl">Contact form</h3>
-                <p className="text-sm mt-4 leading-relaxed">Select Your Service 😎</p>
+                <p className="text-sm mt-4 leading-relaxed">
+                  Select Your Service 😎
+                </p>
               </div>
 
               <label className="input input-bordered flex items-center gap-2">
-                <img src="/image/contactformsvg/user-svgrepo-com.svg" className="object-contain w-5" alt="" />
+                <img
+                  src="/image/contactformsvg/user-svgrepo-com.svg"
+                  className="object-contain w-5"
+                  alt=""
+                />
                 <input
                   type="text"
                   name="name"
-                  className="grow"
-                  placeholder="Full Name"
                   value={formData.name}
                   onChange={handleChange}
+                  className="grow"
+                  placeholder="Full name"
+                  required
                 />
               </label>
               <label className="input input-bordered flex items-center gap-2">
-                <img src="/image/contactformsvg/email-svgrepo-com.svg" className="object-contain w-5" alt="" />
+                <img
+                  src="/image/contactformsvg/email-svgrepo-com.svg"
+                  className="object-contain w-5"
+                  alt=""
+                />
                 <input
                   type="email"
                   name="email"
-                  className="grow"
-                  placeholder="Valid Email ID"
                   value={formData.email}
                   onChange={handleChange}
+                  className="grow"
+                  placeholder="Valid email ID"
+                  required
                 />
               </label>
               <label className="input input-bordered flex items-center gap-2">
-                <img src="/image/contactformsvg/phone-calling-svgrepo-com.svg" className="object-contain w-5" alt="" />
+                <img
+                  src="/image/contactformsvg/phone-calling-svgrepo-com.svg"
+                  className="object-contain w-5"
+                  alt=""
+                />
                 <input
-                  type="number"
+                  type="text"
                   name="phone"
-                  className="grow"
-                  placeholder="Phone Number"
                   value={formData.phone}
                   onChange={handleChange}
+                  className="grow"
+                  placeholder="Phone number"
+                  required
                 />
               </label>
-
-              {/* Services */}
               <label className="input input-bordered flex items-center gap-2">
-                <img src="/image/contactformsvg/computer-svgrepo-com.svg" className="object-contain w-5" alt="" />
+                <img
+                  src="/image/contactformsvg/computer-svgrepo-com.svg"
+                  className="object-contain w-5"
+                  alt=""
+                />
                 <input
                   type="text"
                   name="service"
-                  className="grow"
-                  placeholder="Service"
                   value={formData.service}
                   onChange={handleChange}
+                  className="grow"
+                  placeholder="Service"
+                  required
                 />
               </label>
-
-              {/* Description */}
               <label className="flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2">
-                <img src="/image/contactformsvg/pen-new-square-svgrepo-com.svg" className="object-contain w-5" alt="" />
+                <img
+                  src="/image/contactformsvg/pen-new-square-svgrepo-com.svg"
+                  className="object-contain w-5"
+                  alt=""
+                />
                 <textarea
                   name="message"
-                  className="grow text-gray-800 border-0 px-4 py-2 rounded-lg outline-none resize-none"
-                  placeholder="Your message here"
                   value={formData.message}
                   onChange={handleChange}
+                  className="grow text-gray-800 border-0 px-4 py-2 rounded-lg outline-none resize-none"
+                  placeholder="Your message here"
+                  required
                 />
               </label>
-
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                  />
-                  <label htmlFor="remember-me" className="ml-3 block text-sm text-gray-800">
-                    Remember me
-                  </label>
+                  <button
+                    type="button"
+                    onClick={openModal}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Map
+                  </button>
                 </div>
               </div>
-
+              {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center">
+                  <div className="bg-white rounded-lg p-6 max-w-lg w-full h-96 relative">
+                    <button
+                      onClick={closeModal}
+                      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                    >
+                      ✕
+                    </button>
+                    <h3 className="font-bold text-lg mb-4">Location</h3>
+                    <div>
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31217.71352680924!2d75.34767172641374!3d12.028770118889245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba43f8da119a579%3A0x71a5623da78b0f89!2sTaliparamba%2C%20Kerala!5e0!3m2!1sen!2sin!4v1722922631743!5m2!1sen!2sin"
+                        className="w-full lg:h-72"
+                        style={{ border: "0" }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Map"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div className="!mt-8">
                 <button
                   type="submit"
@@ -131,6 +187,30 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+
+      {/* <div className="flex px-36 gap-3 py-12">
+        <div className="flex flex-col gap-3 p-3 border-2 w-full rounded-lg">
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+        </div>
+        <div className="flex flex-col gap-3 p-3 border-2 w-full rounded-lg">
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+        </div>
+        <div className="flex flex-col gap-3 p-3 border-2 w-full rounded-lg">
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+        </div>
+        <div className="flex flex-col gap-3 p-3 border-2 w-full rounded-lg">
+          <p>1</p>
+          <p>1</p>
+          <p>1</p>
+        </div>
+      </div> */}
+      <ToastContainer />
     </div>
   );
 };

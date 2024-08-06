@@ -199,9 +199,11 @@ function BlogTest() {
         <div className="grid gap-4 px-12 py-12 lg:grid-cols-5">
           {blogs.map((blog) => (
             <div className="flex flex-col gap-2 border-2 border-green-500 p-4 rounded-lg" key={blog.id}>
+              <div className="flex overflow-scroll gap-2">
               {blog.blogImages && blog.blogImages.map((img, index) => (
                 <img key={index} src={img} alt="Blog Post" />
               ))}
+              </div>
               <h3>Header: {blog.heading}</h3>
               <p>Title: {blog.title}</p>
               <p>Description: {blog.description}</p>

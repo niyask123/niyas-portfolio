@@ -11,7 +11,9 @@ const BlogIndex = () => {
     try {
       setLoading(true);
       const response = await axios.get("http://localhost:5999/api/blogs");
-      const sortedBlogs = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const sortedBlogs = response.data.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
       setBlogs(sortedBlogs);
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -47,15 +49,18 @@ const BlogIndex = () => {
                     <p>{new Date(blog.date).toLocaleDateString()}</p>
                   </div>
                   {blog.blogImages && blog.blogImages.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {blog.blogImages.map((img, index) => (
-                        <img
-                          key={index}
-                          src={img}
-                          alt={`Blog Post ${index}`}
-                          className="w-full h-32 object-cover rounded-lg"
-                        />
-                      ))}
+                    <div className="flex gap-2">
+                      <div className="carousel carousel-vertical gap-2 rounded-box h-80">
+                        {blog.blogImages.map((img, index) => (
+                          <div key={index} className="carousel-item">
+                            <img
+                              src={img}
+                              alt={`Blog Post ${index}`}
+                              className="object-cover rounded-lg h-80"
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                   <div className="mt-4 flex flex-col gap-3">

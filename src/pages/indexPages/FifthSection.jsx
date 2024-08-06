@@ -28,7 +28,7 @@ function FifthSection() {
           {projects.map((project, index) => (
             <div key={project.id} className="flex flex-col gap-5 text-white">
               {index % 2 === 0 ? (
-                <div className="flex lg:flex-row flex-col">
+                <div className=" grid-cols-2 grid lg:flex-row flex-col">
                   <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] p-2 lg:p-6 w-full">
                     <div className="carousel rounded-box">
                       {project.projectImages.map((image, imgIndex) => (
@@ -48,7 +48,7 @@ function FifthSection() {
                       <p className="w-3 bg-green-600 rounded-full h-3"></p>
                     </div>
                     <p className="font-thin">{project.company}</p>
-                    <div className="flex gap-3">
+                    <div className="grid grid-cols-5 gap-3">
                       {project.usedLanguages.split(",").map((lang, i) => (
                         <p key={i} className="btn rounded-full h-4 min-h-8">
                           {lang}
@@ -62,21 +62,21 @@ function FifthSection() {
                     >
                       <img
                         src="/image/logo/goto.png"
-                        className="object-contain h-8 mt-6 w-10"
+                        className="object-contain h-8  w-10"
                         alt="Go to project"
                       />
                     </a>
                   </div>
                 </div>
               ) : (
-                <div className="flex lg:flex-row flex-col">
+                <div className="grid grid-cols-2 lg:flex-row flex-col">
                   <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full">
                     <div className="flex justify-between w-full">
                       <p className="text-2xl">{project.title}</p>
                       <p className="w-3 bg-green-600 rounded-full h-3"></p>
                     </div>
                     <p className="font-thin">{project.company}</p>
-                    <div className="flex gap-3">
+                    <div className="grid grid-cols-5 gap-3">
                       {project.usedLanguages.split(",").map((lang, i) => (
                         <p key={i} className="btn rounded-full h-4 min-h-8">
                           {lang}
@@ -90,7 +90,7 @@ function FifthSection() {
                     >
                       <img
                         src="/image/logo/goto.png"
-                        className="object-contain h-8 mt-6 w-10"
+                        className="object-contain h-8 w-10"
                         alt="Go to project"
                       />
                     </a>

@@ -116,45 +116,51 @@ function Header() {
           </ul>
         </div>
         <a className=" text-xl">
-            <img src="/image/logo.png" className="object-contain w-16" alt="" />
+          <img src="/image/logo.png" className="object-contain w-16" alt="" />
         </a>
       </div>
 
       <div className="navbar-end gap-2">
         <div className="navbar-center font-semibold hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 gap-2">
             <li>
-              <div className="flex justify-center items-center">
-                <img
-                  src="/image/logo/logowhite/home.png"
-                  className="object-contain h-4"
-                  alt=""
-                />
-                <Link to={"/"}>HOME</Link>
-              </div>
+              <Link to={"/"}>
+                <div className="flex justify-center gap-2 items-center">
+                  <img
+                    src="/image/logo/logowhite/home.png"
+                    className="object-contain h-4"
+                    alt=""
+                  />
+                  HOME
+                </div>
+              </Link>
             </li>
             <li>
-              <div className="flex justify-center items-center">
-                <img
-                  src="/image/logo/logowhite/Portfolio.png"
-                  className="object-contain h-4"
-                  alt=""
-                />
-                <Link to={"/about-us"}>ABOUT</Link>
-              </div>
+              <Link to={"/about-us"}>
+                <div className="flex gap-2 justify-center items-center">
+                  <img
+                    src="/image/logo/logowhite/Portfolio.png"
+                    className="object-contain h-4"
+                    alt=""
+                  />
+                  ABOUT
+                </div>
+              </Link>
             </li>
             <li>
-              <div className="flex justify-center items-center">
-                <img
-                  src="/image/logo/logowhite/Services.png"
-                  className="object-contain h-4"
-                  alt=""
-                />
-                <Link to={"/projects"}>PROJECT</Link>
-              </div>
+              <Link to={"/projects"}>
+                <div className="flex justify-center gap-2 items-center">
+                  <img
+                    src="/image/logo/logowhite/Services.png"
+                    className="object-contain h-4"
+                    alt=""
+                  />
+                  PROJECT
+                </div>
+              </Link>
             </li>
             <li>
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center gap-2 items-center">
                 <img
                   src="/image/logo/logowhite/Blog.png"
                   className="object-contain h-4"
@@ -162,17 +168,18 @@ function Header() {
                 />
                 <a>BLOG</a>
               </div>
-             
             </li>
             <li>
-              <div className="flex justify-center items-center">
-                <img
-                  src="/image/logo/logowhite/msgcontact.png"
-                  className="object-contain h-4"
-                  alt=""
-                />
-                <Link to={"/contact-us"}>CONTACT</Link>
-              </div>
+              <Link to={"/contact-us"}>
+                <div className="flex justify-center gap-2 items-center">
+                  <img
+                    src="/image/logo/logowhite/msgcontact.png"
+                    className="object-contain h-4"
+                    alt=""
+                  />
+                  CONTACT
+                </div>
+              </Link>
             </li>
 
             {localStorage.getItem("authenticated") ? (
