@@ -43,14 +43,14 @@ function BlogTest() {
     try {
       setLoading(true);
       if (editing) {
-        await axios.put(`http://localhost:5999/api/blogs/${currentBlogId}`, formDataToSend, {
+        await axios.put(`https://backendportfolio-six.vercel.app/${currentBlogId}`, formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
         toast.success('Blog post updated successfully!');
       } else {
-        await axios.post('http://localhost:5999/api/blogs', formDataToSend, {
+        await axios.post('https://backendportfolio-six.vercel.app', formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -80,7 +80,7 @@ function BlogTest() {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5999/api/blogs');
+      const response = await axios.get('https://backendportfolio-six.vercel.app');
       setBlogs(response.data);
     } catch (error) {
       console.error('Error fetching blogs:', error);
@@ -106,7 +106,7 @@ function BlogTest() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5999/api/blogs/${id}`);
+      await axios.delete(`https://backendportfolio-six.vercel.app/${id}`);
       fetchBlogs();
       toast.success('Blog post deleted successfully!');
     } catch (error) {

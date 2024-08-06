@@ -8,7 +8,7 @@ function Footer() {
     //       <div class="px-5 py-2">
     //         <a
     //           href="#"
-    //           class="text-base leading-6 text-gray-500 hover:text-gray-900"
+    //           class="text-base leading-6  hover:"
     //         >
     //           About
     //         </a>
@@ -16,7 +16,7 @@ function Footer() {
     //       <div class="px-5 py-2">
     //         <a
     //           href="#"
-    //           class="text-base leading-6 text-gray-500 hover:text-gray-900"
+    //           class="text-base leading-6  hover:"
     //         >
     //           Blog
     //         </a>
@@ -24,7 +24,7 @@ function Footer() {
     //       <div class="px-5 py-2">
     //         <a
     //           href="#"
-    //           class="text-base leading-6 text-gray-500 hover:text-gray-900"
+    //           class="text-base leading-6  hover:"
     //         >
     //           Team
     //         </a>
@@ -32,7 +32,7 @@ function Footer() {
     //       <div class="px-5 py-2">
     //         <a
     //           href="#"
-    //           class="text-base leading-6 text-gray-500 hover:text-gray-900"
+    //           class="text-base leading-6  hover:"
     //         >
     //           Pricing
     //         </a>
@@ -40,7 +40,7 @@ function Footer() {
     //       <div class="px-5 py-2">
     //         <a
     //           href="#"
-    //           class="text-base leading-6 text-gray-500 hover:text-gray-900"
+    //           class="text-base leading-6  hover:"
     //         >
     //           Contact
     //         </a>
@@ -48,14 +48,14 @@ function Footer() {
     //       <div class="px-5 py-2">
     //         <a
     //           href="#"
-    //           class="text-base leading-6 text-gray-500 hover:text-gray-900"
+    //           class="text-base leading-6  hover:"
     //         >
     //           Terms
     //         </a>
     //       </div>
     //     </nav>
     //     <div class="flex justify-center mt-8 space-x-6">
-    //       <a href="#" class="text-gray-400 hover:text-gray-500">
+    //       <a href="#" class="text-gray-400 hover:">
     //         <span class="sr-only">Facebook</span>
     //         <svg
     //           class="w-6 h-6"
@@ -70,7 +70,7 @@ function Footer() {
     //           ></path>
     //         </svg>
     //       </a>
-    //       <a href="#" class="text-gray-400 hover:text-gray-500">
+    //       <a href="#" class="text-gray-400 hover:">
     //         <span class="sr-only">Instagram</span>
     //         <svg
     //           class="w-6 h-6"
@@ -85,7 +85,7 @@ function Footer() {
     //           ></path>
     //         </svg>
     //       </a>
-    //       <a href="#" class="text-gray-400 hover:text-gray-500">
+    //       <a href="#" class="text-gray-400 hover:">
     //         <span class="sr-only">Twitter</span>
     //         <svg
     //           class="w-6 h-6"
@@ -96,7 +96,7 @@ function Footer() {
     //           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
     //         </svg>
     //       </a>
-    //       <a href="#" class="text-gray-400 hover:text-gray-500">
+    //       <a href="#" class="text-gray-400 hover:">
     //         <span class="sr-only">GitHub</span>
     //         <svg
     //           class="w-6 h-6"
@@ -111,7 +111,7 @@ function Footer() {
     //           ></path>
     //         </svg>
     //       </a>
-    //       <a href="#" class="text-gray-400 hover:text-gray-500">
+    //       <a href="#" class="text-gray-400 hover:">
     //         <span class="sr-only">Dribbble</span>
     //         <svg
     //           class="w-6 h-6"
@@ -132,12 +132,12 @@ function Footer() {
     //     </p>
     //   </div>
     // </section>
-    <footer className="bg-white lg:grid lg:grid-cols-5">
-      <div className="relative block h-32 lg:col-span-2 lg:h-full">
+    <footer className=" lg:grid lg:grid-cols-5">
+      <div className="relative block lg:col-span-2 lg:h-full">
         <img
-          src="https://images.unsplash.com/photo-1642370324100-324b21fab3a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+          src="/image/personal/footer.png"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-fill"
         />
       </div>
 
@@ -145,20 +145,20 @@ function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div>
             <p>
-              <span className="text-xs uppercase tracking-wide text-gray-500">
+              <span className="text-xs uppercase tracking-wide ">
                 {" "}
                 Call us{" "}
               </span>
 
               <a
                 href="#"
-                className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl"
+                className="block text-2xl font-medium  hover:opacity-75 sm:text-3xl"
               >
                 +91 8075 8015 27
               </a>
             </p>
 
-            <ul className="mt-8 space-y-1 text-sm text-gray-700">
+            <ul className="mt-8 space-y-1 text-sm ">
               <li>Monday to Friday: 10am - 5pm</li>
               <li>Weekend: 10am - 3pm</li>
             </ul>
@@ -169,7 +169,7 @@ function Footer() {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">Instagram</span>
 
@@ -193,7 +193,7 @@ function Footer() {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">GitHub</span>
 
@@ -216,13 +216,13 @@ function Footer() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <p className="font-medium text-gray-900">Services</p>
+              <p className="font-medium ">Services</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     Responsive Web Design
                   </a>
@@ -231,7 +231,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   > Single Page Application (SPA) Development
                   </a>
                 </li>
@@ -239,7 +239,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     Custom Web Application Development
                   </a>
@@ -248,7 +248,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >User Interface (UI) Development
                   </a>
                 </li>
@@ -256,7 +256,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >Front-End Architecture Design
                   </a>
                 </li>
@@ -264,13 +264,13 @@ function Footer() {
             </div>
 
             <div>
-              <p className="font-medium text-gray-900">Pages</p>
+              <p className="font-medium ">Pages</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     About{" "}
@@ -280,7 +280,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >Project
                   </a>
                 </li>
@@ -288,14 +288,14 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >Blog
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >Contact Us
                   </a>
                 </li>
@@ -308,7 +308,7 @@ function Footer() {
           <div className="sm:flex sm:items-center sm:justify-between">
            
 
-            <p className="mt-8 text-xs text-gray-500 sm:mt-0">
+            <p className="mt-8 text-xs  sm:mt-0">
               &copy; 2024. Niyas. All rights reserved.
             </p>
           </div>

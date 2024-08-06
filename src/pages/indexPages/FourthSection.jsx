@@ -5,7 +5,8 @@ const FourthSection = () => {
     <>
       <div className=" lg:px-20 flex-row gap-12 py-12 text-left justify-between">
         <div className="text-center flex-col gap-3 items-center flex justify-center">
-          <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg ">Experience</p>
+          <span className="py-1 font-semibold text-3xl"> Experience</span>
+
           <p>Here is a quick summary of my most recent experiences:</p>
         </div>
 
@@ -22,7 +23,8 @@ const FourthSection = () => {
               <p className="text-2xl ">Web Developer</p>
               <p>-6 Months-</p>
             </div>
-            <p className="font-thin">September 2023 – February 2024 | Ernakulam (Infopark), India
+            <p className="font-thin">
+              September 2023 – February 2024 | Ernakulam (Infopark), India
             </p>
           </div>
           <div className="flex gap-3 flex-col bg-[#3c4c63] rounded-lg p-6 w-full">
@@ -30,11 +32,13 @@ const FourthSection = () => {
               <p className="text-2xl ">Web Developer (internship)</p>
               <p>-7 Months-</p>
             </div>
-            <p className="font-thin">February 2023 – August 2023 | Trivandrum, India</p>
+            <p className="font-thin">
+              February 2023 – August 2023 | Trivandrum, India
+            </p>
           </div>
         </div>
       </div>
-    <hr className="border-[#1d232a] mx-6" />
+      <hr className="border-[#1d232a] mx-6" />
     </>
   );
 };

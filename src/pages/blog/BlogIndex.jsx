@@ -10,7 +10,7 @@ const BlogIndex = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5999/api/blogs");
+      const response = await axios.get("https://backendportfolio-six.vercel.app/api/blogs");
       const sortedBlogs = response.data.sort(
         (a, b) => new Date(b.date) - new Date(a.date)
       );
@@ -30,9 +30,7 @@ const BlogIndex = () => {
   return (
     <div>
       <div className="text-center flex-col gap-3 py-8 items-center flex justify-center">
-        <p className="bg-[#374151] text-white px-3 py-1 w-fit rounded-lg">
-          Our Blogs
-        </p>
+        <span className="py-1 font-semibold text-3xl"> Our Blogs</span>
         <p>Personal Blogs and notes:</p>
       </div>
       {error && <p className="text-red-500">{error}</p>}
@@ -50,13 +48,13 @@ const BlogIndex = () => {
                   </div>
                   {blog.blogImages && blog.blogImages.length > 0 && (
                     <div className="flex gap-2">
-                      <div className="carousel carousel-vertical gap-2 rounded-box h-80">
+                      <div className="carousel carousel-vertical gap-2 rounded-box w-full h-80">
                         {blog.blogImages.map((img, index) => (
-                          <div key={index} className="carousel-item">
+                          <div key={index} className="carousel-item w-full">
                             <img
                               src={img}
                               alt={`Blog Post ${index}`}
-                              className="object-cover rounded-lg h-80"
+                              className="object-cover rounded-lg h-80 w-full"
                             />
                           </div>
                         ))}
@@ -86,6 +84,7 @@ const BlogIndex = () => {
         </div>
       )}
       <hr className="border-[#1d232a] mx-6" />
+      <hr className="border-[#ffffff] mx-6" />
     </div>
   );
 };

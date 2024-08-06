@@ -20,7 +20,7 @@ function UploadPage() {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("http://localhost:5999/api/projects");
+      const response = await axios.get("https://backendportfolio-six.vercel.app/api/projects");
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -59,7 +59,7 @@ function UploadPage() {
     try {
       if (isEditing) {
         await axios.patch(
-          `http://localhost:5999/api/projects/${currentProjectId}`,
+          `https://backendportfolio-six.vercel.app/api/projects/${currentProjectId}`,
           formData,
           {
             headers: {
@@ -70,7 +70,7 @@ function UploadPage() {
         setIsEditing(false);
         setCurrentProjectId(null);
       } else {
-        await axios.post("http://localhost:5999/api/projects", formData, {
+        await axios.post("https://backendportfolio-six.vercel.app/api/projects", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -98,7 +98,7 @@ function UploadPage() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5999/api/projects/${id}`);
+      await axios.delete(`https://backendportfolio-six.vercel.app/api/projects/${id}`);
       fetchProjects();
     } catch (error) {
       console.error("Error deleting project:", error);

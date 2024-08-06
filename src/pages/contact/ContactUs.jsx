@@ -21,7 +21,7 @@ const ContactUs = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5999/api/contact/send",
+        "https://backendportfolio-six.vercel.app/api/contact/send",
         formData
       );
       if (response.status === 200) {
