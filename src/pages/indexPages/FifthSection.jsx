@@ -10,12 +10,13 @@ function FifthSection() {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("https://backendportfolio-six.vercel.app/api/projects");
+      const response = await axios.get(
+        "https://backendportfolio-six.vercel.app/api/projects"
+      );
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
     }
-
   };
 
   return (
@@ -34,15 +35,21 @@ function FifthSection() {
                   <div className=" lg:grid-cols-2 grid lg:flex-row flex-col">
                     <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] p-2 lg:p-6 w-full">
                       <div className="carousel rounded-box">
-                        {project.projectImages.slice().reverse().map((image, imgIndex) => (
-                          <div key={imgIndex} className="carousel-item w-full">
-                            <img
-                              src={image}
-                              className="w-full"
-                              alt={`Project ${index} Image ${imgIndex}`}
-                            />
-                          </div>
-                        ))}
+                        {project.projectImages
+                          .slice()
+                          .reverse()
+                          .map((image, imgIndex) => (
+                            <div
+                              key={imgIndex}
+                              className="carousel-item w-full"
+                            >
+                              <img
+                                src={image}
+                                className="w-full"
+                                alt={`Project ${index} Image ${imgIndex}`}
+                              />
+                            </div>
+                          ))}
                       </div>
                     </div>
                     <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full">
@@ -51,7 +58,7 @@ function FifthSection() {
                         <p className="w-3 bg-green-600 rounded-full h-3"></p>
                       </div>
                       <p className="font-thin">{project.company}</p>
-                      <div className="grid grid-cols-5 gap-3">
+                      <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-5 gap-3">
                         {project.usedLanguages.split(",").map((lang, i) => (
                           <p key={i} className="btn rounded-full h-4 min-h-8">
                             {lang}
@@ -79,7 +86,7 @@ function FifthSection() {
                         <p className="w-3 bg-green-600 rounded-full h-3"></p>
                       </div>
                       <p className="font-thin">{project.company}</p>
-                      <div className="grid grid-cols-5 gap-3">
+                      <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-5 gap-3">
                         {project.usedLanguages.split(",").map((lang, i) => (
                           <p key={i} className="btn rounded-full h-4 min-h-8">
                             {lang}
@@ -99,18 +106,23 @@ function FifthSection() {
                       </a>
                     </div>
                     <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] p-2 lg:p-6 w-full">
-                    <div className="carousel rounded-box">
-  {project.projectImages.slice().reverse().map((image, imgIndex) => (
-    <div key={imgIndex} className="carousel-item w-full">
-      <img
-        src={image}
-        className="w-full"
-        alt={`Project ${index} Image ${imgIndex}`}
-      />
-    </div>
-  ))}
-</div>
-
+                      <div className="carousel rounded-box">
+                        {project.projectImages
+                          .slice()
+                          .reverse()
+                          .map((image, imgIndex) => (
+                            <div
+                              key={imgIndex}
+                              className="carousel-item w-full"
+                            >
+                              <img
+                                src={image}
+                                className="w-full"
+                                alt={`Project ${index} Image ${imgIndex}`}
+                              />
+                            </div>
+                          ))}
+                      </div>
                     </div>
                   </div>
                 )}
