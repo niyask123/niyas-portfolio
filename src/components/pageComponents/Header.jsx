@@ -256,6 +256,7 @@ function Header() {
           <div className="flex flex-col lg:flex-row">
             <div className="w-full p-6">
               <img src="/gif/login.gif" className="rounded-lg" alt="" />
+              <p className="text-center text-red-700 font-semibold">Admin Only</p>
             </div>
             <form
               onSubmit={handleLogin}
