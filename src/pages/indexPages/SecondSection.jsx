@@ -3,7 +3,7 @@ import React from "react";
 const SecondSection = () => {
   return (
     <>
-      <div className="flex px-3 text-justify  lg:px-20 flex-row gap-12 py-10 lg:text-left justify-between">
+      <div className="flex px-3 group text-justify  lg:px-20 flex-row gap-12 py-10 lg:text-left justify-between">
         <div className="w-full lg:block hidden ">
           <img
             src="/image/personal/niyas2.png"
@@ -18,12 +18,16 @@ const SecondSection = () => {
             </span>
           </div>
           <h4 className="">
+            <span className="block transition-all duration-500 group-hover:bg-yellow-500 group-hover:text-black">
             I am a dedicated React.js developer passionate about crafting
             user-friendly and visually appealing websites. My goal is to
             leverage my skills in web development to create efficient and
             intuitive web applications that exceed client expectations. With a
             strong foundation in various web technologies and a commitment to
             continuous learning, I strive to deliver high-quality solutions.
+
+            </span>
+           
           </h4>
 
           {/* <div className="flex gap-3">
