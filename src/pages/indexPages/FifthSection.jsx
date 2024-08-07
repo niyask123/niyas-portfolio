@@ -3,7 +3,6 @@ import axios from "axios";
 
 function FifthSection() {
   const [projects, setProjects] = useState([]);
-
   useEffect(() => {
     fetchProjects();
   }, []);
