@@ -58,7 +58,7 @@ function Projects() {
                       </div>
                     ))}
                 </div>
-                <div className="flex flex-col  p-6 w-full">
+                <div className="flex flex-col text-white p-6 w-full">
                   <div className="flex justify-between w-full mb-3">
                     <p className="text-2xl">{project.title}</p>
                     <p className="w-3 bg-green-600 rounded-full h-3"></p>
