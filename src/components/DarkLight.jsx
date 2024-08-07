@@ -11,20 +11,21 @@ import {
 import { FiSun, FiMoon } from "react-icons/fi";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = useState("light");
+
+  const handleThemeChange = (selectedTheme) => {
+    setTheme(selectedTheme);
+    document.documentElement.setAttribute("data-theme", selectedTheme);
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
   return (
     <>
-      <button
+      {/* <button
         onClick={toggleTheme}
         className="p-2 rounded-full border border-red-600 fixed right-3 bottom-16 z-30"
       >
@@ -33,7 +34,75 @@ const ThemeToggle = () => {
         ) : (
           <FiSun className="w-6 h-6" />
         )}
-      </button>
+      </button> */}
+      <div className="flex items-center justify-center p-2 rounded-full border border-red-600 fixed right-3 bottom-16 z-30">
+        <div className="dropdown">
+          <label tabIndex={0} className="">
+            <FiMoon className="w-6 h-6" />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content right-10 bottom-5 menu bg-base-100 rounded-box z-[1] w-fit p-2 shadow"
+          >
+            <li>
+              <div className="flex" onClick={() => handleThemeChange("light")}>
+              <button >Light</button>
+              <div className="flex border-2">
+                <div className="p-1 bg-white"></div>
+                <div className="p-1 bg-black"></div>
+              </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex" onClick={() => handleThemeChange("dark")}>
+              <button >Dark</button>
+              <div className="flex border-2">
+                <div className="p-1 bg-black"></div>
+                <div className="p-1 bg-white"></div>
+              </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex" onClick={() => handleThemeChange("mytheme1")}>
+              <button >
+                Green
+              </button>
+              <div className="flex border-2">
+                <div className="p-1 bg-[#06402b]"></div>
+                <div className="p-1 bg-[#ffedd5]"></div>
+              </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex" onClick={() => handleThemeChange("mytheme2")}>
+              <button >
+              Beige 
+              </button>
+              <div className="flex border-2">
+                <div className="p-1 bg-[#ddd0c8]"></div>
+                <div className="p-1 bg-black"></div>
+              </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex" onClick={() => handleThemeChange("mytheme3")}>
+              <button >
+              Orange 
+              </button>
+              <div className="flex border-2 ">
+                <div className="p-1 bg-[#f9b872]"></div>
+                <div className="p-1 bg-black"></div>
+              </div>
+              </div>
+            </li>
+            {/* <li>
+              <button onClick={() => handleThemeChange("mytheme4")}>
+                Theme 4
+              </button>
+            </li> */}
+          </ul>
+        </div>
+      </div>
       <DropdownComponent />
     </>
   );

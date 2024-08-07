@@ -1,4 +1,5 @@
 import React from "react";
+// import ThemeSwitcher from "./ThemeSwitcher";
 
 const FirstSection = () => {
   return (
@@ -81,6 +82,8 @@ const FirstSection = () => {
         </div>
       </div>
       <hr className="border-[#1d232a] mx-6" />
+      {/* <ThemeSwitcher /> */}
+      
     </>
   );
 };
