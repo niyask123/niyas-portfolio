@@ -35,7 +35,12 @@ const BlogIndex = () => {
       </div>
       {error && <p className="text-red-500">{error}</p>}
       {loading ? (
-        <p>Loading...</p>
+        <div className="text-center flex justify-center items-center h-96">
+        <span class="relative flex h-10 w-10">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-10 w-10 bg-green-500"></span>
+              </span>
+    </div>
       ) : (
         <div className="lg:px-20 px-3 py-12">
           <div className="carousel carousel-end flex p-2">

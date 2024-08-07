@@ -194,7 +194,12 @@ function BlogTest() {
       {error && <p className="text-red-500">{error}</p>}
       <h2 className="py-12">Existing Blog Posts</h2>
       {loading ? (
-        <p>Loading...</p>
+        <div className="text-center flex justify-center items-center h-96">
+        <span class="relative flex h-10 w-10">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-10 w-10 bg-green-500"></span>
+              </span>
+    </div>
       ) : (
         <div className="grid gap-4 px-12 py-12 lg:grid-cols-5">
           {blogs.map((blog) => (
