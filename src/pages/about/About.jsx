@@ -16,7 +16,7 @@ const About = () => {
           <div className="grid lg:grid-cols-5 justify-center items-center gap-8 p-4">
             <div className="flex flex-col justify-center transition-transform duration-300 hover:rotate-12 hover:translate-y-4">
               <img
-                src="/public/image/about/browser.png"
+                src="/image/about/browser.png"
                 className="h-24 object-contain"
                 alt="Browser"
               />
@@ -24,7 +24,7 @@ const About = () => {
             </div>
             <div className="flex flex-col justify-center transition-transform duration-300 hover:-rotate-12 hover:translate-y-4">
               <img
-                src="/public/image/about/code.png"
+                src="/image/about/code.png"
                 className="h-24 object-contain"
                 alt="Code"
               />
@@ -34,7 +34,7 @@ const About = () => {
             </div>
             <div className="flex flex-col justify-center transition-transform duration-300 hover:rotate-12 hover:translate-y-4">
               <img
-                src="/public/image/about/coding.png"
+                src="/image/about/coding.png"
                 className="h-24 object-contain"
                 alt="Coding"
               />
@@ -42,7 +42,7 @@ const About = () => {
             </div>
             <div className="flex flex-col justify-center transition-transform duration-300 hover:-rotate-12 hover:translate-y-4">
               <img
-                src="/public/image/about/programming.png"
+                src="/image/about/programming.png"
                 className="h-24 object-contain"
                 alt="Programming"
               />
@@ -50,7 +50,7 @@ const About = () => {
             </div>
             <div className="flex flex-col justify-center transition-transform duration-300 hover:rotate-12 hover:translate-y-4">
               <img
-                src="/public/image/about/responsive-design (1).png"
+                src="/image/about/responsive-design (1).png"
                 className="h-24 object-contain"
                 alt="Responsive Design"
               />
