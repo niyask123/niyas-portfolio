@@ -46,53 +46,56 @@ const ThemeToggle = () => {
           >
             <li>
               <div className="flex" onClick={() => handleThemeChange("light")}>
-              <button >Light</button>
-              <div className="flex border-2">
-                <div className="p-1 bg-white"></div>
-                <div className="p-1 bg-black"></div>
-              </div>
+                <button>Light</button>
+                <div className="flex border-2">
+                  <div className="p-1 bg-white"></div>
+                  <div className="p-1 bg-black"></div>
+                </div>
               </div>
             </li>
             <li>
               <div className="flex" onClick={() => handleThemeChange("dark")}>
-              <button >Dark</button>
-              <div className="flex border-2">
-                <div className="p-1 bg-black"></div>
-                <div className="p-1 bg-white"></div>
-              </div>
-              </div>
-            </li>
-            <li>
-              <div className="flex" onClick={() => handleThemeChange("mytheme1")}>
-              <button >
-                Green
-              </button>
-              <div className="flex border-2">
-                <div className="p-1 bg-[#06402b]"></div>
-                <div className="p-1 bg-[#ffedd5]"></div>
-              </div>
+                <button>Dark</button>
+                <div className="flex border-2">
+                  <div className="p-1 bg-black"></div>
+                  <div className="p-1 bg-white"></div>
+                </div>
               </div>
             </li>
             <li>
-              <div className="flex" onClick={() => handleThemeChange("mytheme2")}>
-              <button >
-              Beige 
-              </button>
-              <div className="flex border-2">
-                <div className="p-1 bg-[#ddd0c8]"></div>
-                <div className="p-1 bg-black"></div>
-              </div>
+              <div
+                className="flex"
+                onClick={() => handleThemeChange("mytheme1")}
+              >
+                <button>Green</button>
+                <div className="flex border-2">
+                  <div className="p-1 bg-[#06402b]"></div>
+                  <div className="p-1 bg-[#ffedd5]"></div>
+                </div>
               </div>
             </li>
             <li>
-              <div className="flex" onClick={() => handleThemeChange("mytheme3")}>
-              <button >
-              Orange 
-              </button>
-              <div className="flex border-2 ">
-                <div className="p-1 bg-[#f9b872]"></div>
-                <div className="p-1 bg-black"></div>
+              <div
+                className="flex"
+                onClick={() => handleThemeChange("mytheme2")}
+              >
+                <button>Beige</button>
+                <div className="flex border-2">
+                  <div className="p-1 bg-[#ddd0c8]"></div>
+                  <div className="p-1 bg-black"></div>
+                </div>
               </div>
+            </li>
+            <li>
+              <div
+                className="flex"
+                onClick={() => handleThemeChange("mytheme3")}
+              >
+                <button>Orange</button>
+                <div className="flex border-2 ">
+                  <div className="p-1 bg-[#f9b872]"></div>
+                  <div className="p-1 bg-black"></div>
+                </div>
               </div>
             </li>
             {/* <li>
@@ -126,40 +129,56 @@ const DropdownComponent = () => {
           className="dropdown-content right-20 menu bg-base-100 rounded-box z-[1] w-fit p-2 shadow"
         >
           <li>
-            <div className="flex gap-3">
-              <FcMissedCall />
-              <p>Call</p>
-            </div>
+            <a href="tel:+918075801527">
+              <div className="flex gap-3">
+                <FcMissedCall />
+                <p>Call</p>
+              </div>
+            </a>
           </li>
           <li>
-            <div className="flex gap-3">
-              <FcCollaboration />
-              <p>Chat</p>
-            </div>
+            <a
+              href="https://wa.me/8075801527"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex gap-3 items-center">
+                <FcCollaboration />
+                <p>Chat</p>
+              </div>
+            </a>
           </li>
           <li>
-            <div className="flex gap-3">
-              <FcSms />
-              <p>Mail</p>
-            </div>
+            <a href="mailto:niyaskknr@gmail.ocm">
+              <div className="flex gap-3">
+                <FcSms />
+                <p>Mail</p>
+              </div>
+            </a>
           </li>
           <li>
-            <div className="flex gap-3">
-              <FaSquareInstagram />
-              <p>Instagram</p>
-            </div>
+            <a href="https://www.instagram.com/niyas_k__?igsh=c2NiNDI4MzIyaHNv">
+              <div className="flex gap-3">
+                <FaSquareInstagram />
+                <p>Instagram</p>
+              </div>
+            </a>
           </li>
           <li>
-            <div className="flex gap-3">
-              <CiLinkedin />
-              <p>Linkedin</p>
-            </div>
+            <a href="www.linkedin.com/in/niyas-k-032764286">
+              <div className="flex gap-3">
+                <CiLinkedin />
+                <p>Linkedin</p>
+              </div>
+            </a>
           </li>
           <li>
-            <div className="flex gap-3">
-              <FaGithub />
-              <p>Github</p>
-            </div>
+            <a href="https://github.com/niyask123">
+              <div className="flex gap-3">
+                <FaGithub />
+                <p>Github</p>
+              </div>
+            </a>
           </li>
         </ul>
       )}
