@@ -78,7 +78,7 @@ const BlogIndex = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Read more
+                        View Post
                       </Link>
                     </p>
                   </div>

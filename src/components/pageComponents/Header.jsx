@@ -79,16 +79,14 @@ function Header() {
               </div>
             </li>
             <li>
-            <Link to={"blog"}>
               <div className="flex justify-between pr-20 py-2 items-center">
                 <img
                   src="/image/logo/logowhite/Blog.png"
                   className="object-contain h-4"
                   alt=""
                 />
-                BLOG
+                <Link to={"blog"}>BLOG</Link>
               </div>
-              </Link>
             </li>
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">

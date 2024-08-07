@@ -13,7 +13,7 @@ const FirstSection = () => {
             </div>
             <div className="flex gap-4 items-end">
               <h4>I_am_a</h4>
-              <h2>(<span className="bg-yellow-500 text-black">Frontend_</span>Developer)</h2>
+              <h2 className="lg:text-2xl text-lg">(<span className="bg-yellow-500 text-black">Frontend_</span>Developer)</h2>
             </div>
           </code>
           <p>
