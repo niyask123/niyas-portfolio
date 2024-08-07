@@ -44,8 +44,12 @@ const Blog = () => {
             {blogs.map((blog) => (
               <div className="carousel-item" key={blog.id}>
                 <div className="flex flex-col border-2 shadow-xl   rounded-2xl mx-2 p-4 lg:w-full lg:h-full">
+                  
                   <div className="flex py-3 flex-gap-3 justify-between">
-                    <h3 className="text-xl font-bold">{blog.heading}</h3>
+                    <h3 className="text-xl flex gap-2 justify-center items-center font-bold"><span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                  </span>{blog.heading}</h3>
                     <p>{new Date(blog.date).toLocaleDateString()}</p>
                   </div>
                   {blog.blogImages && blog.blogImages.length > 0 && (
