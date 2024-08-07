@@ -8,11 +8,11 @@ const FirstSection = () => {
           <code className="flex flex-col gap-3">
             <div className="flex gap-4 items-end">
               <h4>Hi,_my_name_is</h4>
-              <h1 className="text-2xl lg:text-5xl">&#123;Niyas_K&#125;</h1>
+              <h1 className="text-2xl lg:text-5xl">&#123;<span className="text-red-700">Niyas</span><span className="text-blue-600">_K</span>&#125;</h1>
             </div>
             <div className="flex gap-4 items-end">
               <h4>I_am_a</h4>
-              <h2>Frontend_Developer</h2>
+              <h2>(<span className="bg-yellow-500 text-black">Frontend_</span>Developer)</h2>
             </div>
           </code>
           <p>
