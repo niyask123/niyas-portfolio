@@ -253,7 +253,7 @@ function Header() {
       {/* Login Modal */}
       <dialog id="my_modal_2" className="modal w-full">
         <div className="modal-box w-11/12 max-w-5xl">
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             <div className="w-full p-6">
               <img src="/gif/login.gif" className="rounded-lg" alt="" />
             </div>
