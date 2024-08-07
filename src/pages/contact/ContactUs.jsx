@@ -128,7 +128,7 @@ const ContactUs = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="grow text-gray-800 border-0 px-4 py-2 rounded-lg outline-none resize-none"
+                  className="grow border-0 px-4 py-2 rounded-lg outline-none resize-none"
                   placeholder="Your message here"
                   required
                 />
