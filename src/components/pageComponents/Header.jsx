@@ -46,7 +46,7 @@ function Header() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box  z-40 mt-3 w-52 p-2 shadow"
           >
             <li>
               <div className="flex justify-between pr-20 py-2 items-center">
@@ -160,15 +160,15 @@ function Header() {
               </Link>
             </li>
             <li>
-            <Link to={'/blog'}>
-              <div className="flex justify-center gap-2 items-center">
-                <img
-                  src="/image/logo/logowhite/Blog.png"
-                  className="object-contain h-4"
-                  alt=""
-                />
-                BLOG
-              </div>
+              <Link to={"/blog"}>
+                <div className="flex justify-center gap-2 items-center">
+                  <img
+                    src="/image/logo/logowhite/Blog.png"
+                    className="object-contain h-4"
+                    alt=""
+                  />
+                  BLOG
+                </div>
               </Link>
             </li>
             <li>
@@ -256,7 +256,9 @@ function Header() {
           <div className="flex flex-col lg:flex-row">
             <div className="w-full p-6">
               <img src="/gif/login.gif" className="rounded-lg" alt="" />
-              <p className="text-center text-red-700 font-semibold">Admin Only</p>
+              <p className="text-center text-red-700 font-semibold">
+                Admin Only
+              </p>
             </div>
             <form
               onSubmit={handleLogin}
