@@ -43,12 +43,13 @@ const BlogIndex = () => {
     </div>
       ) : (
         <div className="lg:px-20 px-3 py-12">
-          <div className="carousel carousel-end flex p-2">
+          <div className="carousel carousel-end flex p-2 ">
             {blogs.map((blog) => (
-              <div className="carousel-item" key={blog.id}>
-                <div className="flex flex-col border-2 rounded-2xl mx-2 p-4 lg:w-72 lg:h-full">
+              <div className="carousel-item py-6" key={blog.id}>
+                <code>
+                <div className="flex flex-col border-2  hover:shadow-xl rounded-2xl mx-2 p-4 lg:w-72 lg:h-full">
                   <div className="flex py-3 flex-gap-3 justify-between">
-                    <h3 className="text-xl font-bold">{blog.heading}</h3>
+                    <h3 className="text-xl font-bold text-red-600">{blog.heading}</h3>
                     <p>{new Date(blog.date).toLocaleDateString()}</p>
                   </div>
                   {blog.blogImages && blog.blogImages.length > 0 && (
@@ -67,7 +68,7 @@ const BlogIndex = () => {
                     </div>
                   )}
                   <div className="mt-4 flex flex-col gap-3">
-                    <p className="text-lg font-semibold text-start">
+                    <p className="text-lg font-semibold text-start text-green-700">
                       {blog.title}
                     </p>
                     <p className="text-sm text-start">{blog.description}</p>
@@ -83,6 +84,7 @@ const BlogIndex = () => {
                     </p>
                   </div>
                 </div>
+                </code>
               </div>
             ))}
           </div>
