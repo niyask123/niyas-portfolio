@@ -65,5 +65,6 @@ export default {
       },
     ],
     darkTheme: "dark", // Set dark theme as default
+    
   },
 }

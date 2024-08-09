@@ -143,6 +143,7 @@ const FourthSection = () => {
         </div>
       </div>
       <hr className="border-[#1d232a] mx-6" />
+      
     </>
   );
 };
