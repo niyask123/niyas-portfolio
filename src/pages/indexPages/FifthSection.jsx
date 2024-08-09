@@ -57,7 +57,7 @@ function FifthSection() {
                         <p className="w-3 bg-green-600 rounded-full h-3"></p>
                       </div>
                       <p className="font-thin">{project.company}</p>
-                      <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-5 gap-3">
+                      <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-4 gap-3">
                         {project.usedLanguages.split(",").map((lang, i) => (
                           <p key={i} className="btn rounded-full h-4 min-h-8">
                             {lang}
@@ -104,7 +104,7 @@ function FifthSection() {
                         <p className="w-3 bg-green-600 rounded-full h-3"></p>
                       </div>
                       <p className="font-thin">{project.company}</p>
-                      <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-5 gap-3">
+                      <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-4 gap-3">
                         {project.usedLanguages.split(",").map((lang, i) => (
                           <p key={i} className="btn rounded-full h-4 min-h-8">
                             {lang}
@@ -150,6 +150,9 @@ function FifthSection() {
         </div>
       </div>
       <hr className="border-[#1d232a] mx-6" />
+
+
+      
     </>
   );
 }
