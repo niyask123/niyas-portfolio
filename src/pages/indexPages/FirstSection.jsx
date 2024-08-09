@@ -37,8 +37,8 @@ const FirstSection = () => {
             </span>
           </p>
           
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex lg:flex-col gap-2">
+          <div className="grid lg:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-2">
               <div className="flex gap-3">
                 <p className="text-center justify-center items-center flex">
                   <img
@@ -87,7 +87,7 @@ const FirstSection = () => {
               </div>
             </div>
             <div className="">
-            <pre class="language-js text-start">
+            <pre class="language-js px-3 text-start">
               <code class="language-js code-highlight">
                 <span class="code-line line-number" line="1">
                   <span class="token keyword text-purple-500">const</span> services{" "}
