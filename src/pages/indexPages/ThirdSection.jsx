@@ -15,7 +15,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold  p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500 ">React JS</p>
+            <p className="font-semibold  p-1 ">React JS</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -23,7 +23,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">JavaScript</p>
+            <p className="font-semibold p-1 ">JavaScript</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -31,7 +31,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">TypeScript</p>
+            <p className="font-semibold p-1 ">TypeScript</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -39,7 +39,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">nodeJS</p>
+            <p className="font-semibold p-1 ">nodeJS</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -47,7 +47,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">Postgresql</p>
+            <p className="font-semibold p-1 ">Postgresql</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -55,7 +55,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">SASS</p>
+            <p className="font-semibold p-1 ">SASS</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -63,7 +63,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">TailwindCSS</p>
+            <p className="font-semibold p-1 ">TailwindCSS</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -71,7 +71,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">Bootstrap</p>
+            <p className="font-semibold p-1 ">Bootstrap</p>
           </div>
 
           <div className="flex p-3 flex-col gap-3 text-center">
@@ -80,7 +80,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">PHP</p>
+            <p className="font-semibold p-1 ">PHP</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -88,7 +88,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">HTML</p>
+            <p className="font-semibold p-1 ">HTML</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -96,7 +96,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">CSS3</p>
+            <p className="font-semibold p-1 ">CSS3</p>
           </div>
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
@@ -104,7 +104,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">jQuery</p>
+            <p className="font-semibold p-1 ">jQuery</p>
           </div>
           
           <div className="flex p-3 flex-col gap-3 text-center">
@@ -113,7 +113,7 @@ const ThirdSection = () => {
               className="object-contain h-14"
               alt=""
             />
-            <p className="font-semibold p-1 group-hover:bg-yellow-500 group-hover:rounded-md duration-500">Git</p>
+            <p className="font-semibold p-1 ">Git</p>
           </div>
         </div>
       </div>
