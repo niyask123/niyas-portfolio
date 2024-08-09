@@ -254,7 +254,7 @@ function Header() {
       <dialog id="my_modal_2" className="modal w-full">
         <div className="modal-box w-11/12 max-w-5xl">
           <div className="flex flex-col lg:flex-row">
-            <div className="w-full p-6">
+            <div className="w-full p-6 justify-center text-center items-center flex flex-col py-6">
               <img src="/gif/login.gif" className="rounded-lg" alt="" />
               <p className="text-center text-red-700 font-semibold">
                 Admin Only
