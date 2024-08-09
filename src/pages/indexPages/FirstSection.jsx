@@ -88,7 +88,7 @@ const FirstSection = () => {
             </div>
             <div className="">
             <pre class="language-js px-3 text-start">
-              <code class="language-js code-highlight">
+              <code class="language-js code-highlight lg:text-base text-sm">
                 <span class="code-line line-number" line="1">
                   <span class="token keyword text-purple-500">const</span> services{" "}
                   <span class="token operator text-blue-400">=</span>{" "}
