@@ -84,7 +84,7 @@ const FirstSection = () => {
                     alt="Resume"
                   />
                 </a>
-              </div>
+              </div>   
             </div>
             <div className="">
             <pre class="language-js px-3 text-start">
