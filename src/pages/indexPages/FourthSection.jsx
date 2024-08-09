@@ -42,7 +42,7 @@ const FourthSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6 py-12">
         <div className="space-y-6 justify-between  md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
-          <div className="md:5/12 lg:w-1/2">
+          <div className="md:5/12 lg:w-1/2 lg:block hidden">
             <img
               src="/image/personal/code.png"
               alt="image"
@@ -57,7 +57,7 @@ const FourthSection = () => {
             </p>
 
             <div className="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
-              <div className="mt-8 flex gap-4 md:items-center">
+              <div className="mt-8 flex lg:gap-4 md:items-center">
                 <div className="w-12 h-12 flex gap-4 rounded-full ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -76,14 +76,14 @@ const FourthSection = () => {
                   <h3 className="font-semibold text-lg text-gray-700 dark:text-red-700">
                     <code>Front-End Developer</code>
                   </h3>
-                  <div className="flex justify-between">
+                  <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">September 2024 | Trivandrum, India</p>
                     <p>continuing</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-8 flex py-6 gap-4 md:items-center">
-                <div className="w-12 h-12 flex gap-4 rounded-full ">
+              <div className="mt-8 flex py-6 lg:gap-4 md:items-center">
+                <div className="w-12 h-12 flex lg:block gap-4 rounded-full ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -101,7 +101,7 @@ const FourthSection = () => {
                   <h3 className="font-semibold text-lg text-gray-700 dark:text-indigo-600">
                     <code>Web Developer</code>
                   </h3>
-                  <div className="flex justify-between">
+                  <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">
                       September 2023 – February 2024 | Ernakulam (Infopark),
                       India
@@ -111,7 +111,7 @@ const FourthSection = () => {
                 </div>
               </div>
 
-              <div className="mt-8 flex py-6 gap-4 md:items-center">
+              <div className="mt-8 flex py-6 lg:gap-4 md:items-center">
                 <div className="w-12 h-12 flex gap-4 rounded-full ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +130,7 @@ const FourthSection = () => {
                   <h3 className="font-semibold text-lg text-gray-700 dark:text-green-600">
                     Web Developer (internship)
                   </h3>
-                  <div className="flex justify-between">
+                  <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">
                       February 2023 – August 2023 | Trivandrum, India
                     </p>
