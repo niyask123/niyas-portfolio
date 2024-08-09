@@ -44,7 +44,7 @@ const FourthSection = () => {
         <div className="space-y-6 justify-between  md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
           <div className="md:5/12 lg:w-1/2">
             <img
-              src="/public/image/personal/code.png"
+              src="/image/personal/code.png"
               alt="image"
               loading="lazy"
               className="w-full"
