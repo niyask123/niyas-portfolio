@@ -12,8 +12,8 @@ export default {
   ],
   daisyui: {
     themes: [
-      "dark",
-      "light", 
+      "dark", // Default theme set to dark
+      "light",
       {
         mytheme1: {
           "primary": "#ffedd5",
@@ -44,7 +44,7 @@ export default {
           "secondary": "#c7d2fe",
           "accent": "#a5b4fc",
           "neutral": "#6b7280",
-          "base-content":"#000" ,
+          "base-content":"#000",
           "base-100": "#F9B872",
           "info": "#60a5fa",
           "success": "#10b981",
@@ -64,5 +64,6 @@ export default {
         // },
       },
     ],
+    darkTheme: "dark", // Set dark theme as default
   },
 }

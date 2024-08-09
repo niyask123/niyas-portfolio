@@ -11,11 +11,16 @@ import {
 import { FiSun, FiMoon } from "react-icons/fi";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("light");
+  // Initialize theme state with dark mode or value from localStorage
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme : "dark";
+  });
 
   const handleThemeChange = (selectedTheme) => {
     setTheme(selectedTheme);
     document.documentElement.setAttribute("data-theme", selectedTheme);
+    localStorage.setItem("theme", selectedTheme);
   };
 
   useEffect(() => {
@@ -25,20 +30,14 @@ const ThemeToggle = () => {
 
   return (
     <>
-      {/* <button
-        onClick={toggleTheme}
-        className="p-2 rounded-full border border-red-600 fixed right-3 bottom-16 z-30"
-      >
-        {theme === "light" ? (
-          <FiMoon className="w-6 h-6" />
-        ) : (
-          <FiSun className="w-6 h-6" />
-        )}
-      </button> */}
       <div className="flex items-center justify-center p-2 rounded-full border border-red-600 fixed right-3 bottom-16 z-30">
         <div className="dropdown">
           <label tabIndex={0} className="">
-            <FiMoon className="w-6 h-6" />
+            {theme === "light" ? (
+              <FiMoon className="w-6 h-6" />
+            ) : (
+              <FiSun className="w-6 h-6" />
+            )}
           </label>
           <ul
             tabIndex={0}
@@ -92,17 +91,12 @@ const ThemeToggle = () => {
                 onClick={() => handleThemeChange("mytheme3")}
               >
                 <button>Orange</button>
-                <div className="flex border-2 ">
+                <div className="flex border-2">
                   <div className="p-1 bg-[#f9b872]"></div>
                   <div className="p-1 bg-black"></div>
                 </div>
               </div>
             </li>
-            {/* <li>
-              <button onClick={() => handleThemeChange("mytheme4")}>
-                Theme 4
-              </button>
-            </li> */}
           </ul>
         </div>
       </div>
@@ -149,7 +143,7 @@ const DropdownComponent = () => {
             </a>
           </li>
           <li>
-            <a href="mailto:niyaskknr@gmail.ocm">
+            <a href="mailto:niyaskknr@gmail.com">
               <div className="flex gap-3">
                 <FcSms />
                 <p>Mail</p>
@@ -165,7 +159,7 @@ const DropdownComponent = () => {
             </a>
           </li>
           <li>
-            <a href="www.linkedin.com/in/niyas-k-032764286">
+            <a href="https://www.linkedin.com/in/niyas-k-032764286">
               <div className="flex gap-3">
                 <CiLinkedin />
                 <p>Linkedin</p>
