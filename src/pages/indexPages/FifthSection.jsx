@@ -79,6 +79,25 @@ function FifthSection() {
                   </div>
                 ) : (
                   <div className="grid lg:grid-cols-2 lg:flex-row flex-col">
+                    <div className="flex flex-[.5] gap-3 lg:hidden  flex-col bg-[#515f75] p-2 lg:p-6 w-full">
+                      <div className="carousel rounded-box">
+                        {project.projectImages
+                          .slice()
+                          .reverse()
+                          .map((image, imgIndex) => (
+                            <div
+                              key={imgIndex}
+                              className="carousel-item w-full"
+                            >
+                              <img
+                                src={image}
+                                className="w-full"
+                                alt={`Project ${index} Image ${imgIndex}`}
+                              />
+                            </div>
+                          ))}
+                      </div>
+                    </div>
                     <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full">
                       <div className="flex justify-between w-full">
                         <p className="text-2xl">{project.title}</p>
@@ -104,7 +123,7 @@ function FifthSection() {
                         />
                       </a>
                     </div>
-                    <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] p-2 lg:p-6 w-full">
+                    <div className=" flex-[.5] gap-3 lg:block hidden flex-col bg-[#515f75] p-2 lg:p-6 w-full">
                       <div className="carousel rounded-box">
                         {project.projectImages
                           .slice()
