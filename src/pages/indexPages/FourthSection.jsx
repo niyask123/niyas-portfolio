@@ -129,7 +129,7 @@ const FourthSection = () => {
                 </div>
                 <div className="w-5/6">
                   <h3 className="font-semibold text-lg text-gray-700 dark:text-green-600">
-                    Web Developer (internship)
+                  <code>  Web Developer (internship)</code>
                   </h3>
                   <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">
