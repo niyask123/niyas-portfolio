@@ -69,7 +69,7 @@ const About = () => {
             leverage my skills in a challenging and dynamic setting.
           </p>
           <p className="relative overflow-hidden">
-            <span className="block transition-all duration-500  group-hover:text-black">
+            <span className="block transition-all duration-500  ">
               Highly skilled and dedicated React.js developer with{" "}
               <span className="relative z-10">1.4 years of experience</span> in
               building and maintaining responsive web applications. Proficient
