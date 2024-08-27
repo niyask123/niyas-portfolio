@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import bgImage from '../../assets/bg1.png';
 
 function FifthSection() {
   const [projects, setProjects] = useState([]);
@@ -20,8 +21,8 @@ function FifthSection() {
 
   return (
     <>
-      <div className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between">
-        <div className="text-center flex-col gap-3 items-center flex justify-center">
+      <div className="lg:px-20 px-3 flex-row gap-12  py-12 text-left justify-between " style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="text-center flex-col gap-3 items-center flex justify-center text-white">
           <span className="py-1 font-semibold text-3xl"> My Works</span>
           <p>Already I have completed works:</p>
         </div>
