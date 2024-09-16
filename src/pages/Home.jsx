@@ -14,7 +14,7 @@ function Home() {
       <ThirdSection/>
       <FourthSection/>
       <FifthSection/>
-      <BlogIndex/>
+      {/* <BlogIndex/> */}
     </div>
   );
 }
