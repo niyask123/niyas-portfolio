@@ -25,30 +25,30 @@ const ThirdSection = () => {
             />
             <p className="font-semibold p-1 ">JavaScript</p>
           </div>
-          <div className="flex p-3 flex-col gap-3 text-center">
+          {/* <div className="flex p-3 flex-col gap-3 text-center">
             <img
               src="/image/logo/skills/ts.svg"
               className="object-contain h-14"
               alt=""
             />
             <p className="font-semibold p-1 ">TypeScript</p>
-          </div>
-          <div className="flex p-3 flex-col gap-3 text-center">
+          </div> */}
+          {/* <div className="flex p-3 flex-col gap-3 text-center">
             <img
               src="/image/logo/skills/nodejs.svg"
               className="object-contain h-14"
               alt=""
             />
             <p className="font-semibold p-1 ">nodeJS</p>
-          </div>
-          <div className="flex p-3 flex-col gap-3 text-center">
+          </div> */}
+          {/* <div className="flex p-3 flex-col gap-3 text-center">
             <img
               src="/image/logo/skills/postgresql.svg"
               className="object-contain h-14"
               alt=""
             />
             <p className="font-semibold p-1 ">Postgresql</p>
-          </div>
+          </div> */}
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
               src="/image/logo/skills/sass.svg"
