@@ -10,10 +10,10 @@ function Home() {
   return (
     <div className="">
       <FirstSection />
-      <SecondSection/>
-      <ThirdSection/>
-      <FourthSection/>
-      <FifthSection/>
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection />
+      <FifthSection />
       {/* <BlogIndex/> */}
     </div>
   );
