@@ -52,8 +52,9 @@ const About = () => {
             <div className="flex gap-4 items-end">
               <h4>I_am_a</h4>
               <h2 className="lg:text-2xl text-lg">
-                (<span className="bg-yellow-500 text-black">Frontend_</span>
-                Developer)
+                {/* (<span className="bg-yellow-500 text-black">Frontend_</span>
+                Developer) */}
+                (web designer and front-end developer)
               </h2>
             </div>
           </code>
@@ -140,7 +141,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };

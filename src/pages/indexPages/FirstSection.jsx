@@ -17,16 +17,18 @@ const FirstSection = () => {
                 &#125;
               </h1>
             </div>
-            <div className="flex gap-4 items-end">
-              <h4>I_am_a</h4>
-              <h2 className="lg:text-2xl text-lg">
-                (<span className="bg-yellow-500 text-black">Frontend_</span>
-                Developer)
+            <div className="flex flex-col md:flex-row items-start gap-4 md:items-end">
+              <h4>I_am_a,</h4>
+              <h2 className="lg:text-3xl sm:2xl: text-lg">
+                {/* (<span className="bg-yellow-500 text-black">Frontend_</span>
+                Developer) */}
+                <span className="text-green-400">web designer</span> and{" "}
+                <span className="text-blue-400">front-end developer</span>
               </h2>
             </div>
           </code>
           <p className="relative overflow-hidden">
-            <span className="block transition-all duration-500 group-hover:bg-yellow-500 group-hover:text-black">
+            <span className="block transition-all duration-500 group-hover:bg-yellow-300 group-hover:text-black">
               Highly skilled and dedicated React.js developer with{" "}
               <span className="relative z-10">1.4 years of experience</span> in
               building and maintaining responsive web applications. Proficient
@@ -36,14 +38,14 @@ const FirstSection = () => {
               quickly and adapt to new technologies and tools.
             </span>
           </p>
-          
+
           <div className="grid lg:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex gap-3">
-                <p className="text-center justify-center items-center flex">
+                <p className="text-center  justify-center items-center flex">
                   <img
                     src="/image/logo/navigation.png"
-                    className="object-contain w-5"
+                    className="object-contain w-5 z-0 "
                     alt="Navigation"
                   />
                 </p>
@@ -84,50 +86,57 @@ const FirstSection = () => {
                     alt="Resume"
                   />
                 </a>
-              </div>   
+              </div>
             </div>
             <div className="">
-            <pre class="language-js px-3 text-start">
-              <code class="language-js code-highlight lg:text-base text-xs">
-                <span class="code-line line-number" line="1">
-                  <span class="token keyword text-purple-500">const</span> services{" "}
-                  <span class="token operator text-blue-400">=</span>{" "}
-                  <span class="token punctuation text-blue-400">[</span>
-                </span>{" "}
-                <br />
-                <span class="code-line line-number highlight-line" line="2">
-                  {" "}
-                  <span class="token string text-green-600">'Responsive Web Design'</span>
-                </span>{" "}
-                <br />
-                <span class="code-line line-number highlight-line" line="3">
-                  {" "}
-                  <span class="token string text-green-600">'Web Development'</span>
-                </span>{" "}
-                <br />
-                <span class="code-line line-number highlight-line" line="4">
-                  {" "}
-                  <span class="token string text-green-600">
-                    'Front-End Architecture Design'
+              <pre class="language-js px-3 text-start">
+                <code class="language-js code-highlight lg:text-base text-xs">
+                  <span class="code-line line-number" line="1">
+                    <span class="token keyword text-purple-500">const</span>{" "}
+                    services <span class="token operator text-blue-400">=</span>{" "}
+                    <span class="token punctuation text-blue-400">[</span>
+                  </span>{" "}
+                  <br />
+                  <span class="code-line line-number highlight-line" line="2">
+                    {" "}
+                    <span class="token string text-green-600">
+                      'Responsive Web Design'
+                    </span>
+                  </span>{" "}
+                  <br />
+                  <span class="code-line line-number highlight-line" line="3">
+                    {" "}
+                    <span class="token string text-green-600">
+                      'Web Development'
+                    </span>
+                  </span>{" "}
+                  <br />
+                  <span class="code-line line-number highlight-line" line="4">
+                    {" "}
+                    <span class="token string text-green-600">
+                      'Front-End Architecture Design'
+                    </span>
+                  </span>{" "}
+                  <br />
+                  <span class="code-line line-number" line="5">
+                    <span class="token punctuation text-blue-400">]</span>
+                  </span>{" "}
+                  <br />
+                  <span class="code-line line-number" line="6">
+                    <span class="token keyword control-flow text-purple-500">
+                      if
+                    </span>{" "}
+                    <span class="token punctuation text-blue-400">(</span>
+                    have_a_project
+                    <span class="token punctuation text-blue-400">)</span>{" "}
+                    <span class="token function text-purple-500">navigate</span>
+                    <span class="token punctuation text-blue-400">(</span>
+                    <span class="token string text-green-600">'/contact'</span>
+                    <span class="token punctuation text-blue-400">)</span>
                   </span>
-                </span>{" "}
-                <br />
-                <span class="code-line line-number" line="5">
-                  <span class="token punctuation text-blue-400">]</span>
-                </span>{" "}
-                <br />
-                <span class="code-line line-number" line="6">
-                  <span class="token keyword control-flow text-purple-500">if</span>{" "}
-                  <span class="token punctuation text-blue-400">(</span>have_a_project
-                  <span class="token punctuation text-blue-400">)</span>{" "}
-                  <span class="token function text-purple-500">navigate</span>
-                  <span class="token punctuation text-blue-400">(</span>
-                  <span class="token string text-green-600">'/contact'</span>
-                  <span class="token punctuation text-blue-400">)</span>
-                </span>
-              </code>
-            </pre>
-          </div>
+                </code>
+              </pre>
+            </div>
           </div>
         </div>
 

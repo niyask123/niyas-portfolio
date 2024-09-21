@@ -30,6 +30,18 @@ const ThemeToggle = () => {
 
   return (
     <>
+      <div className="relative lg:block hidden">
+        <div className="absolute flex gap-2 h-32 -bottom-20 -right-16">
+          <div className="border-r border-yellow-400 h-20"></div>
+          <div className="border-r border-green-400 h-32"></div>
+          <div className="border-r border-red-400 h-36"></div>
+          <div className="border-r border-blue-400 h-40"></div>
+          <div className="border-r border-teal-500 h-36"></div>
+          <div className="border-r border-x-purple-600 h-34"></div>
+          <div className="border-r h-20"></div>
+        </div>
+      </div>
+
       <div className="flex items-center justify-center p-2 rounded-full border border-red-600 fixed right-3 bottom-16 z-30">
         <div className="dropdown">
           <label tabIndex={0} className="">
