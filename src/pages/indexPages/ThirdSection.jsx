@@ -106,7 +106,7 @@ const ThirdSection = () => {
             />
             <p className="font-semibold p-1 ">jQuery</p>
           </div>
-          
+
           <div className="flex p-3 flex-col gap-3 text-center">
             <img
               src="/image/logo/skills/git.svg"

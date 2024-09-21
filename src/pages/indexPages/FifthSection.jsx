@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import bgImage from '../../assets/bg1.png';
+import bgImage from "../../assets/bg1.png";
 
 function FifthSection() {
   const [projects, setProjects] = useState([]);
@@ -29,7 +29,10 @@ function FifthSection() {
   // Calculate pagination
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+  const currentProjects = projects.slice(
+    indexOfFirstProject,
+    indexOfLastProject
+  );
 
   const totalPages = Math.ceil(projects.length / projectsPerPage);
 
@@ -50,13 +53,17 @@ function FifthSection() {
       <div
         className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between"
         style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          // backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="text-center flex-col gap-3 items-center flex justify-center text-white">
           <span className="py-1 font-semibold text-3xl"> My Works</span>
+          <p className="text-2xl font-semibold">
+            <span className="text-5xl text-yellow-400">{projects.length}</span>
+            <span className="text-red-300 text-3xl">+</span> Projects{" "}
+          </p>
           <p>Already I have completed works:</p>
         </div>
 
@@ -65,14 +72,17 @@ function FifthSection() {
             {currentProjects.map((project, index) => (
               <div key={project.id} className="flex flex-col gap-5 text-white">
                 {index % 2 === 0 ? (
-                  <div className="lg:grid-cols-2 grid lg:flex-row flex-col">
-                    <div className="flex flex-[.5] gap-3 flex-col bg-[#515f75] p-2 lg:p-6 w-full">
+                  <div className="lg:grid-cols-2 border-2 rounded-lg border-white/20 grid lg:flex-row flex-col">
+                    <div className="flex flex-[.5] gap-3 flex-col items-center justify-center border-r-2 lg:border-dashed border-white/20  p-2 lg:p-6 w-full">
                       <div className="carousel rounded-box">
                         {project.projectImages
                           .slice()
                           .reverse()
                           .map((image, imgIndex) => (
-                            <div key={imgIndex} className="carousel-item w-full">
+                            <div
+                              key={imgIndex}
+                              className="carousel-item w-full"
+                            >
                               <img
                                 src={image}
                                 className="w-full"
@@ -82,13 +92,16 @@ function FifthSection() {
                           ))}
                       </div>
                     </div>
-                    <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full">
+                    <div className="flex flex-[.5] gap-3 flex-col p-6 w-full">
                       <div className="flex justify-between w-full">
                         <p className="text-2xl">{project.title}</p>
                         <p className="w-3 bg-green-600 rounded-full h-3"></p>
                       </div>
                       <p className="font-thin">{project.company}</p>
-                      <p className="text-sm">{new Date(project.updatedAt).toLocaleDateString()}</p> {/* Display the date */}
+                      <p className="text-sm">
+                        {new Date(project.updatedAt).toLocaleDateString()}
+                      </p>{" "}
+                      {/* Display the date */}
                       <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-4 gap-3">
                         {project.usedLanguages.split(",").map((lang, i) => (
                           <p key={i} className="btn rounded-full h-4 min-h-8">
@@ -110,7 +123,7 @@ function FifthSection() {
                     </div>
                   </div>
                 ) : (
-                  <div className="grid lg:grid-cols-2 lg:flex-row flex-col">
+                  <div className="grid lg:grid-cols-2 lg:flex-row flex-col border-2 rounded-lg border-white/20 ">
                     <div className="flex flex-[.5] gap-3 lg:hidden flex-col bg-[#515f75] p-2 lg:p-6 w-full">
                       <div className="carousel rounded-box">
                         {project.projectImages
@@ -130,13 +143,16 @@ function FifthSection() {
                           ))}
                       </div>
                     </div>
-                    <div className="flex flex-[.5] gap-3 flex-col bg-[#2f5d9e] p-6 w-full">
+                    <div className="flex flex-[.5] gap-3 flex-col  p-6 w-full lg:border-r-2 border-dashed border-white/20">
                       <div className="flex justify-between w-full">
                         <p className="text-2xl">{project.title}</p>
                         <p className="w-3 bg-green-600 rounded-full h-3"></p>
                       </div>
                       <p className="font-thin">{project.company}</p>
-                      <p className="text-sm">{new Date(project.updatedAt).toLocaleDateString()}</p> {/* Display the date */}
+                      <p className="text-sm">
+                        {new Date(project.updatedAt).toLocaleDateString()}
+                      </p>{" "}
+                      {/* Display the date */}
                       <div className="grid grid-cols-2 lg:py-0 py-5 lg:grid-cols-4 gap-3">
                         {project.usedLanguages.split(",").map((lang, i) => (
                           <p key={i} className="btn rounded-full h-4 min-h-8">
@@ -156,7 +172,7 @@ function FifthSection() {
                         />
                       </a>
                     </div>
-                    <div className="flex-[.5] gap-3 lg:block hidden flex-col bg-[#515f75] p-2 lg:p-6 w-full">
+                    <div className="flex-[.5] gap-3 lg:flex items-center justify-center hidden flex-col p-2 lg:p-6 w-full">
                       <div className="carousel rounded-box">
                         {project.projectImages
                           .slice()
