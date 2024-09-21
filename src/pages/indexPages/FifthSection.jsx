@@ -51,22 +51,27 @@ function FifthSection() {
   return (
     <>
       <div
-        className="lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between"
+        className="lg:px-20 px-3 bg-black/50 flex-row gap-12 py-12 text-left justify-between"
         style={{
           // backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
+        {" "}
         <div className="text-center flex-col gap-3 items-center flex justify-center text-white">
           <span className="py-1 font-semibold text-3xl"> My Works</span>
-          <p className="text-2xl font-semibold">
-            <span className="text-5xl text-yellow-400">{projects.length}</span>
-            <span className="text-red-300 text-3xl">+</span> Projects{" "}
-          </p>
+          <code>
+            {" "}
+            <p className="text-2xl font-semibold ">
+              <span className="text-5xl text-yellow-400">
+                {projects.length}
+              </span>
+              <span className="text-red-300 text-3xl">+</span> Projects{" "}
+            </p>{" "}
+          </code>
           <p>Already I have completed works:</p>
         </div>
-
         <div className="flex flex-col lg:px-40 py-10 gap-3 text-white">
           <div className="mt-10 flex flex-col gap-3">
             {currentProjects.map((project, index) => (
