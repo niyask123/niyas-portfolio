@@ -135,7 +135,7 @@ function Footer() {
     <footer className=" lg:grid lg:grid-cols-5">
       <div className="relative block lg:col-span-2 lg:h-full">
         <img
-          src="/image/personal/footer.png"
+          src="/public/image/bg/div.png"
           alt=""
           className="absolute inset-0 h-full w-full object-fill"
         />
@@ -220,44 +220,33 @@ function Footer() {
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >
+                  <a href="#" className=" transition hover:opacity-75">
                     Responsive Web Design
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  > Single Page Application (SPA) Development
+                  <a href="#" className=" transition hover:opacity-75">
+                    {" "}
+                    Single Page Application (SPA) Development
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >
+                  <a href="#" className=" transition hover:opacity-75">
                     Custom Web Application Development
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >User Interface (UI) Development
+                  <a href="#" className=" transition hover:opacity-75">
+                    User Interface (UI) Development
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >Front-End Architecture Design
+                  <a href="#" className=" transition hover:opacity-75">
+                    Front-End Architecture Design
                   </a>
                 </li>
               </ul>
@@ -268,35 +257,26 @@ function Footer() {
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >
+                  <a href="#" className=" transition hover:opacity-75">
                     {" "}
                     About{" "}
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >Project
+                  <a href="#" className=" transition hover:opacity-75">
+                    Project
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >Blog
+                  <a href="#" className=" transition hover:opacity-75">
+                    Blog
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className=" transition hover:opacity-75"
-                  >Contact Us
+                  <a href="#" className=" transition hover:opacity-75">
+                    Contact Us
                   </a>
                 </li>
               </ul>
@@ -306,8 +286,6 @@ function Footer() {
 
         <div className="mt-12 border-t border-gray-100 pt-12">
           <div className="sm:flex sm:items-center sm:justify-between">
-           
-
             <p className="mt-8 text-xs  sm:mt-0">
               &copy; 2024. Niyas. All rights reserved.
             </p>

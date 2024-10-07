@@ -3,7 +3,6 @@ import React from "react";
 const FourthSection = () => {
   return (
     <>
-    
       {/* <div className=" lg:px-20 flex-row gap-12 py-12 text-left justify-between">
         <div className="text-center flex-col gap-3 items-center flex justify-center">
           <span className="py-1 font-semibold text-3xl"> Experience</span>
@@ -41,8 +40,8 @@ const FourthSection = () => {
       </div>
       <hr className="border-[#1d232a] mx-6" /> */}
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6 py-12">
-        <div className="space-y-6 justify-between  md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6 py-12 ">
+        <div className="space-y-6 md:px-20 px-0 lg:px-0  justify-between  lg:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
           <div className="md:5/12 lg:w-1/2 lg:block hidden">
             <img
               src="/image/personal/code.png"
@@ -129,7 +128,7 @@ const FourthSection = () => {
                 </div>
                 <div className="w-5/6">
                   <h3 className="font-semibold text-lg text-gray-700 dark:text-green-600">
-                  <code>  Web Developer (internship)</code>
+                    <code> Web Developer (internship)</code>
                   </h3>
                   <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">
@@ -144,7 +143,6 @@ const FourthSection = () => {
         </div>
       </div>
       <hr className="border-[#1d232a] mx-6" />
-      
     </>
   );
 };

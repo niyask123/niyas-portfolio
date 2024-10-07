@@ -5,6 +5,7 @@ import ThirdSection from "./indexPages/ThirdSection";
 import FourthSection from "./indexPages/FourthSection";
 import FifthSection from "./indexPages/FifthSection";
 import BlogIndex from "./blog/BlogIndex";
+import Education from "./indexPages/Education";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <FirstSection />
       <SecondSection />
       <ThirdSection />
+      {/* <Education /> */}
       <FourthSection />
       <FifthSection />
       {/* <BlogIndex/> */}

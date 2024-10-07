@@ -3,7 +3,14 @@ import React from "react";
 const SecondSection = () => {
   return (
     <>
-      <div className="flex px-3 group text-justify  lg:px-20 flex-row gap-12 py-10 lg:text-left justify-between">
+      <div className="flex px-3 group text-justify  lg:px-20 flex-row gap-12 py-10 lg:text-left justify-between relative">
+        <div className="absolute right-0">
+          <img
+            src="/public/image/bg/right.png"
+            className="object-contain max-w-sm "
+            alt=""
+          />
+        </div>
         <div className="w-full lg:block hidden ">
           <img
             src="/image/personal/niyas2.png"
@@ -13,21 +20,17 @@ const SecondSection = () => {
         </div>
         <div className="flex flex-col gap-4 justify-center">
           <div className="flex text-center  items-center justify-center">
-            <span className="py-1 font-semibold text-3xl">
-              About Me
-            </span>
+            <span className="py-1 font-semibold text-3xl">About Me</span>
           </div>
           <h4 className="">
-            <span className="block transition-all duration-500 group-hover:bg-yellow-500 group-hover:text-black">
-            I am a dedicated React.js developer passionate about crafting
-            user-friendly and visually appealing websites. My goal is to
-            leverage my skills in web development to create efficient and
-            intuitive web applications that exceed client expectations. With a
-            strong foundation in various web technologies and a commitment to
-            continuous learning, I strive to deliver high-quality solutions.
-
+            <span className="block transition-all duration-500 ">
+              I am a dedicated React.js developer passionate about crafting
+              user-friendly and visually appealing websites. My goal is to
+              leverage my skills in web development to create efficient and
+              intuitive web applications that exceed client expectations. With a
+              strong foundation in various web technologies and a commitment to
+              continuous learning, I strive to deliver high-quality solutions.
             </span>
-           
           </h4>
 
           {/* <div className="flex gap-3">

@@ -51,14 +51,21 @@ function FifthSection() {
   return (
     <>
       <div
-        className="lg:px-20 px-3 bg-black/50 flex-row gap-12 py-12 text-left justify-between"
+        className="lg:px-20 px-3 bg-[#1d232a] flex-row gap-12 py-12 text-left relative justify-between"
         style={{
           // backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        {" "}
+        <div className="">
+          {/* bg-[url('/image/bg/11.png')]  bg-no-repeat  */}
+          <img
+            src="/image/bg/11.png"
+            className="absolute w-60 lg:block hidden"
+            alt=""
+          />
+        </div>{" "}
         <div className="text-center flex-col gap-3 items-center flex justify-center text-white">
           <span className="py-1 font-semibold text-3xl"> My Works</span>
           <code>

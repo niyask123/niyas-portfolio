@@ -4,7 +4,7 @@ import React from "react";
 const FirstSection = () => {
   return (
     <>
-      <div className="flex lg:px-20 px-6 flex-row gap-12 py-12 text-left justify-between bg-base-100 text-base-content">
+      <div className="flex flex-col lg:px-20 px-6 lg:flex-row gap-12 py-12 text-left justify-between bg-base-100 text-base-content">
         <div className="flex flex-col gap-4 group">
           <code className="flex flex-col gap-5">
             <div className="flex gap-4 items-end">
@@ -27,8 +27,15 @@ const FirstSection = () => {
               </h2>
             </div>
           </code>
+          <div className="w-full block lg:hidden">
+            <img
+              src="/image/personal/niyas1.png"
+              className="object-contain rounded-lg"
+              alt="Profile"
+            />
+          </div>
           <p className="relative overflow-hidden">
-            <span className="block transition-all duration-500 group-hover:bg-yellow-300 group-hover:text-black">
+            <span className="block transition-all duration-500  ">
               Highly skilled and dedicated React.js developer with{" "}
               <span className="relative z-10">1.4 years of experience</span> in
               building and maintaining responsive web applications. Proficient
