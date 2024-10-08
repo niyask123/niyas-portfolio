@@ -6,7 +6,7 @@ const SecondSection = () => {
       <div className="flex px-3 group text-justify  lg:px-20 flex-row gap-12 py-10 lg:text-left justify-between relative">
         <div className="absolute right-0">
           <img
-            src="/public/image/bg/right.png"
+            src="/image/bg/right.png"
             className="object-contain max-w-sm "
             alt=""
           />

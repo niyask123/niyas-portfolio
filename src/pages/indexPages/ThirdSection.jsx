@@ -6,7 +6,7 @@ const ThirdSection = () => {
       <div className="group lg:px-20 px-3 flex-row gap-12 py-12 text-left justify-between relative">
         <div className="absolute left-0">
           <img
-            src="/public/image/bg/leftside.png"
+            src="/image/bg/leftside.png"
             className="object-contain  max-w-sm "
             alt=""
           />

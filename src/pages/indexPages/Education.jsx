@@ -5,7 +5,7 @@ function Education() {
     <div className=" h-screen flex w-full items-center bg-no-repeat relative ">
       <div className="absolute">
         <img
-          src="/public/image/bg/div.png"
+          src="/image/bg/div.png"
           className="object-contain w-[35rem]"
           alt=""
         />

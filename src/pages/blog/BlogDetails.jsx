@@ -5,7 +5,7 @@ const BlogDetails = () => {
     <div className="py-12 px-36">
       <div className="flex  gap-5 justify-between">
         <div className="flex w-full gap-7">
-          <img src="/public/image/personal/niyas1.png" alt="" />
+          <img src="/image/personal/niyas1.png" alt="" />
           <div className="flex flex-col">
             <h2>Heading</h2>
             <p>Titile</p>
@@ -14,7 +14,7 @@ const BlogDetails = () => {
           </div>
         </div>
         <div className="flex w-full gap-7">
-          <img src="/public/image/personal/niyas1.png" alt="" />
+          <img src="/image/personal/niyas1.png" alt="" />
           <div className="flex flex-col">
             <p>1</p>
             <p>1</p>

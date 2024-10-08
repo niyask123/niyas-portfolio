@@ -135,7 +135,7 @@ function Footer() {
     <footer className=" lg:grid lg:grid-cols-5">
       <div className="relative block lg:col-span-2 lg:h-full">
         <img
-          src="/public/image/bg/div.png"
+          src="/image/bg/div.png"
           alt=""
           className="absolute inset-0 h-full w-full object-fill"
         />
