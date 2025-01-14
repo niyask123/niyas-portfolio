@@ -103,7 +103,7 @@ const FourthSection = () => {
                   </h3>
                   <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">
-                      September 2023 – February 2024 | Ernakulam (Infopark),
+                       | Ernakulam (Infopark),
                       India
                     </p>
                     <p>11 Months</p>
@@ -132,7 +132,7 @@ const FourthSection = () => {
                   </h3>
                   <div className="flex lg:flex-row flex-col gap-1 justify-between">
                     <p className="">
-                      February 2023 – August 2023 | Trivandrum, India
+                       | Trivandrum, India
                     </p>
                     <p>7 Months</p>
                   </div>
