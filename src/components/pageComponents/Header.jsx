@@ -204,7 +204,7 @@ function Header() {
             )}
             <li>
               <a
-                href="/resume/NIYAS-K.pdf"
+                href="/resume/Niyas K web-frontend developer.pdf"
                 download
                 className="btn btn-error min-h-10 h-9 rounded-lg"
               >
