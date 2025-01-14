@@ -72,12 +72,14 @@ function FifthSection() {
             {" "}
             <p className="text-2xl font-semibold ">
               <span className="text-5xl text-yellow-400">
-                {projects.length}
+{/*                 {projects.length} */}
+                20
               </span>
               <span className="text-red-300 text-3xl">+</span> Projects{" "}
             </p>{" "}
           </code>
-          <p>Already I have completed works:</p>
+{/*           <p>Already I have completed works:</p> */}
+           <p>Project Details Upload Soon!!!:</p>
         </div>
         <div className="flex flex-col lg:px-40 py-10 gap-3 text-white">
           <div className="mt-10 flex flex-col gap-3">
