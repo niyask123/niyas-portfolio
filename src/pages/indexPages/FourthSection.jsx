@@ -21,7 +21,7 @@ const FourthSection = () => {
           <div className="flex gap-3 flex-col bg-[#3c4c63] rounded-lg p-6 w-full">
             <div className="flex justify-between w-full">
               <p className="text-2xl ">Web Developer</p>
-              <p>-6 Months-</p>
+              <p>-11 Months-</p>
             </div>
             <p className="font-thin">
               September 2023 – February 2024 | Ernakulam (Infopark), India
@@ -106,7 +106,7 @@ const FourthSection = () => {
                       September 2023 – February 2024 | Ernakulam (Infopark),
                       India
                     </p>
-                    <p>6 Months</p>
+                    <p>11 Months</p>
                   </div>
                 </div>
               </div>
